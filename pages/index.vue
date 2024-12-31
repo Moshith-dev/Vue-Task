@@ -1,6 +1,6 @@
 <template>
-  <main id="top" class="bg-gray-900 main">
-    <nav class="flex items-center justify-between px-8 py-4 bg-[#0f0f1a]">
+  <main id="top" class="bg-white">
+    <nav class="flex items-center justify-between px-8 py-4 bg-[#0f0f1a] fixed w-full overflow-hidden">
       <a class="flex-shrink-0">
         <img src="/assets/logo.png" alt="logo" width="100" />
       </a>
@@ -182,48 +182,248 @@
         >
       </div>
     </nav>
+
+    <!--first section-->
+    <section class="pt-[150px] bg-black " >
+      <div class="items-center pt-2 col">
+        <h1 class="text-6xl font-medium text-center text-white capitalize">
+          An attractive landing <br />
+          for your mobile app.
+        </h1>
+        <p class="my-10 text-2xl text-center text-gray-500 capitalize">
+          The fastest way to assemble beautiful screens and then <br />
+          output clean, reusable code.
+        </p>
+        <div class="flex justify-center">
+          <input
+            type="email"
+            placeholder="Your Email"
+            class="px-6 py-4 text-lg font-bold bg-gray-800 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          />
+          <button
+            class="px-6 py-4 ml-10 text-lg font-bold text-white bg-indigo-600 rounded hover:bg-indigo-500"
+          >
+            Get Access
+          </button>
+        </div>
+      </div>
+    <div class="justify-center mt-5 row">
+      <p class="font-bold text-center text-gray-500 capitalize">trusted by companies like this</p>
+
+    </div>
     
+    </section>
+
+    <!--Video-->
+
+    <section class="bg-white">
+      <div class="pt-20">
+        <div class="flex flex-col py-2 mx-5 my-5 text-center">
+          <h3 class="text-4xl font-bold text-centertext-gray-900">
+            Start with our design and give <br />
+            your app a fresh look.
+          </h3>
+          <p class="text-gray-500 mt-7">
+            Updating branding in your app is now easier than ever with our
+            design system. The <br />
+            Shape allows you to make changes to your colors, icons within your
+            app.
+          </p>
+        </div>
+        <div class="flex justify-center py-2 mx-10 my-5 row">
+          <video
+            class="items-center w-[730px] h-[410px] rounded"
+            controls
+            src="https://prium.github.io/Shape/assets/video/beach.mp4"
+          ></video>
+        </div>
+        <div class="flex justify-around mx-5 mt-5">
+          <div class="flex items-center gap-2 p-1 m-1">
+            <img
+              class="m-2"
+              src="https://prium.github.io/Shape/assets/img/icons/icon-1.png"
+              alt="download"
+              width="50"
+            />
+            <div class="px-5 text-justify card-body">
+              <p class="px-2 py-1 text-xl text-gray-700 title">
+                Create your account in Shape
+              </p>
+              <p class="px-2 py-1 text-gray-500 subtitle">
+                its easy, simple and just a few clicks job to create an account
+                with shape
+              </p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 p-1 m-3">
+            <img
+              class="m-2"
+              src="https://prium.github.io/Shape/assets/img/icons/icon.png"
+              alt="download"
+              width="50"
+            />
+            <div class="px-5 text-justify card-body">
+              <p class="px-2 py-1 text-xl text-gray-700 title">
+                Start building beautiful Apps With shape
+              </p>
+              <p class="px-2 py-1 text-gray-500 subtitle">
+                with our design system, you will find it no brainers job to
+                build your application
+              </p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 p-1 m-3">
+            <img
+              class="m-2"
+              src="https://prium.github.io/Shape/assets/img/icons/icon-3.png"
+              alt="download"
+              width="50"
+            />
+            <div class="px-5 text-justify card-body">
+              <p class="px-2 py-1 text-xl text-gray-700 title">
+                Deploy your site and make money
+              </p>
+              <p class="px-2 py-1 text-gray-500 subtitle">
+                make it, bake it, and next thing you know your cake is ready.
+                enjoy it!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Style-->
+    <section class="bg-gray-800">
+      <div class="py-10">
+        <div class="flex justify-around px-10">
+          <div class="flex flex-col justify-center gap-3 p-10">
+            <h3 class="text-4xl font-bold text-white">
+              It’s Stylish by default.
+            </h3>
+            <div class="items-center my-5 text-gray-400">
+              With our built-in design system, it's easy to create <br />
+              beautiful screens with ease. And because we separate <br />
+              style from layout, you can try out new themes <br />
+              instantly.
+            </div>
+            <div class="flex items-center gap-4">
+              <div>
+                <h3 class="text-xl font-bold text-white">Smart Features</h3>
+                <p class="text-gray-400">
+                  we have 120+ smart unique <br />
+                  features
+                </p>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-white">Dynamic structure</h3>
+                <p class="text-gray-400">
+                  Our structure is stable and<br />
+                  versatile
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="items-center">
+            <img
+              src="https://prium.github.io/Shape/assets/img/gallery/iPad-Pro-Design-Mockup.png"
+              alt="download"
+              width="450"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!--workflow-->
     <section class="bg-gray-950">
-      <div >
+      <div>
         <div class="flex justify-between px-10">
           <div class="flex w-[50%] p-10 items-center">
-            <img  src="/assets/bg3.png" alt="download" width="450" />
+            <img src="/assets/bg3.png" alt="download" width="450" />
           </div>
           <div class="w-[50%] px-1 py-10">
             <h3 class="text-4xl font-bold text-white">
-              Fits into any workflow.
+              Fits Into Any Workflow.
             </h3>
             <p class="py-2 text-gray-500">
-              our system goes with almost any kind of integrations <br> and supports almost every platform.
+              our system goes with almost any kind of integrations <br />
+              and supports almost every platform.
             </p>
-            <div class="grid grid-cols-2 ">
-              <div class="flex items-center gap-2 px-2 py-3 m-3 bg-gray-800 rounded-lg group hover:bg-white">
-                <img src="/assets/logo.png" alt="download" width="50" />
-                <div class="text-center card-body">
-                <p class="px-2 py-1 text-xl text-white title group-hover:text-gray-900">Slack</p>
-                <p class="px-2 py-1 text-gray-500 subtitle">communication</p>
-              </div></div>
-              <div class="flex items-center gap-2 px-2 py-3 m-3 bg-gray-800 rounded-lg group hover:bg-white">
-                <img src="/assets/logo.png" alt="download" width="50" />
-                <div class="text-center card-body">
-                <p class="px-2 py-1 text-xl text-white title group-hover:text-gray-900">Slack</p>
-                <p class="px-2 py-1 text-gray-500 subtitle">communication</p>
-              </div></div>
-              <div class="flex items-center gap-2 px-2 py-3 m-3 bg-gray-800 rounded-lg group hover:bg-white">
-                <img src="/assets/logo.png" alt="download" width="50" />
-                <div class="text-center card-body">
-                <p class="px-2 py-1 text-xl text-white title group-hover:text-gray-900">Slack</p>
-                <p class="px-2 py-1 text-gray-500 subtitle">communication</p>
-              </div></div>
-              <div class="flex items-center gap-2 px-2 py-3 m-3 bg-gray-800 rounded-lg group hover:bg-white">
-                <img src="/assets/logo.png" alt="download" width="50" />
-                <div class="text-center card-body">
-                <p class="px-2 py-1 text-xl text-white title group-hover:text-gray-900">Slack</p>
-                <p class="px-2 py-1 text-gray-500 subtitle">communication</p>
-              </div></div>
+            <div class="grid grid-cols-2">
+              <div
+                class="flex items-center gap-2 px-2 py-3 m-3 bg-gray-800 rounded-lg group hover:bg-white"
+              >
+                <img
+                  class="m-2"
+                  src="https://prium.github.io/Shape/assets/img/icons/slack-logo.png"
+                  alt="download"
+                  width="50"
+                />
+                <div class="px-5 text-justify card-body">
+                  <p
+                    class="px-2 py-1 text-xl text-white title group-hover:text-gray-900"
+                  >
+                    Slack
+                  </p>
+                  <p class="px-2 py-1 text-gray-500 subtitle">communication</p>
+                </div>
+              </div>
+              <div
+                class="flex items-center gap-2 px-2 py-3 m-3 bg-gray-800 rounded-lg group hover:bg-white"
+              >
+                <img
+                  class="m-2"
+                  src="https://prium.github.io/Shape/assets/img/icons/dropbox-logo.png"
+                  alt="download"
+                  width="50"
+                />
+                <div class="px-3 text-justify card-body">
+                  <p
+                    class="px-2 py-1 text-xl text-white title group-hover:text-gray-900"
+                  >
+                    Dropbox
+                  </p>
+                  <p class="px-2 py-1 text-gray-500 subtitle">Productivity</p>
+                </div>
+              </div>
+              <div
+                class="flex items-center gap-2 px-2 py-3 m-3 bg-gray-800 rounded-lg group hover:bg-white"
+              >
+                <img
+                  class="m-2"
+                  src="https://prium.github.io/Shape/assets/img/icons/hubstaff-logo.png"
+                  alt="download"
+                  width="50"
+                />
+                <div class="px-5 text-justify card-body">
+                  <p
+                    class="px-2 py-1 text-xl text-white title group-hover:text-gray-900"
+                  >
+                    Hubstaff
+                  </p>
+                  <p class="px-2 py-1 text-gray-500 subtitle">Productivity</p>
+                </div>
+              </div>
+              <div
+                class="flex items-center gap-2 px-2 py-3 m-3 bg-gray-800 rounded-lg group hover:bg-white"
+              >
+                <img
+                  class="m-2"
+                  src="https://prium.github.io/Shape/assets/img/icons/Sketch_Logo.png"
+                  alt="download"
+                  width="50"
+                />
+                <div class="px-5 text-justify card-body">
+                  <p
+                    class="px-3 py-1 text-xl text-white title group-hover:text-gray-900"
+                  >
+                    Sketch
+                  </p>
+                  <p class="px-3 py-1 text-gray-500 subtitle">Creative Tools</p>
+                </div>
+              </div>
             </div>
-            
           </div>
         </div>
       </div>
@@ -261,7 +461,7 @@
               Learn More
             </button>
             <p class="py-10 text-gray-500">
-              *Please read our <b>term and conditions</b>  <br />
+              *Please read our <b>term and conditions</b> <br />
               before dropping your CV
             </p>
           </div>
@@ -273,7 +473,7 @@
     <section
       class="relative h-[300px] bg-cover bg-center bg-no-repeat"
       style="
-        background-image: url('	https://prium.github.io/Shape/assets/img/bg-img/bg-cta-home.png');
+        background-image: url('https://prium.github.io/Shape/assets/img/bg-img/bg-cta-home.png');
       "
     >
       <div class="absolute inset-0 bg-black bg-opacity-10"></div>
@@ -452,5 +652,8 @@
         </div>
       </div>
     </footer>
-  </main>
+  </main> 
 </template>
+<script setup>
+
+</script>
