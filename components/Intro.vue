@@ -19,54 +19,56 @@
             controls
             src="https://prium.github.io/Shape/assets/video/beach.mp4"
           ></video>
+          <div class="absolute bg-no-repeat bg-contain" style="background-image: url('https://prium.github.io/Shape/assets/img/bg-img/home-video-bg.png');"></div>
+
         </div>
-        <div class="flex justify-around mx-5 mt-5">
-          <div class="flex items-center gap-2 p-1 m-1">
+        <div class="flex justify-around px-5 pt-5 ">
+          <div class="flex items-center gap-1 p-1 m-1">
             <img
               class="m-2"
               src="https://prium.github.io/Shape/assets/img/icons/icon-1.png"
               alt="download"
               width="50"
             />
-            <div class="px-5 text-justify card-body">
-              <p class="px-2 py-1 text-xl text-gray-700 title">
+            <div class="px-5 text-justify ">
+              <p class="px-2 py-1 text-2xl font-semibold text-gray-700">
                 Create your account in Shape
               </p>
-              <p class="px-2 py-1 text-gray-500 subtitle">
+              <p class="px-2 py-1 text-gray-500 ">
                 its easy, simple and just a few clicks job to create an account
                 with shape
               </p>
             </div>
           </div>
-          <div class="flex items-center gap-2 p-1 m-3">
+          <div class="flex items-center gap-1 p-1 m-3">
             <img
               class="m-2"
               src="https://prium.github.io/Shape/assets/img/icons/icon.png"
               alt="download"
               width="50"
             />
-            <div class="px-5 text-justify card-body">
-              <p class="px-2 py-1 text-xl text-gray-700 title">
+            <div class="px-5 text-justify ">
+              <p class="px-2 py-1 text-2xl font-semibold text-gray-700">
                 Start building beautiful Apps With shape
               </p>
-              <p class="px-2 py-1 text-gray-500 subtitle">
+              <p class="px-2 py-1 text-gray-500 ">
                 with our design system, you will find it no brainers job to
                 build your application
               </p>
             </div>
           </div>
-          <div class="flex items-center gap-2 p-1 m-3">
+          <div class="flex items-center gap-1 p-1 m-3">
             <img
               class="m-2"
               src="https://prium.github.io/Shape/assets/img/icons/icon-3.png"
               alt="download"
               width="50"
             />
-            <div class="px-5 text-justify card-body">
-              <p class="px-2 py-1 text-xl text-gray-700 title">
+            <div class="px-5 text-justify ">
+              <p class="px-2 py-1 text-2xl font-semibold text-gray-700">
                 Deploy your site and make money
               </p>
-              <p class="px-2 py-1 text-gray-500 subtitle">
+              <p class="px-2 py-1 text-gray-500 ">
                 make it, bake it, and next thing you know your cake is ready.
                 enjoy it!
               </p>
