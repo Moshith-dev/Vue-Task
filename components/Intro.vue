@@ -1,6 +1,6 @@
 <template>
-    <section class="bg-white">
-      <div class="pt-20">
+    <section class="bg-white relative">
+      <div class="py-20 px-20">
         <div class="flex flex-col py-2 mx-5 my-5 text-center">
           <h3 class="text-4xl font-bold text-centertext-gray-900">
             Start with our design and give <br />
@@ -13,13 +13,20 @@
             app.
           </p>
         </div>
-        <div class="flex justify-center py-2 mx-10 my-5 row">
+        <div class="flex justify-center py-10 mx-10 my-10 row" >
+          
+          <img class="absolute " src="https://prium.github.io/Shape/assets/img/illustrations/home/home-vector-1.png" alt="" style="left:20%; width:16%; top:27%;">
+          <img class="absolute  " src="https://prium.github.io/Shape/assets/img/illustrations/home/home-vector-2.png" alt="" style="right:15%; width:20%;top:27%; ">
+          <div>
+            <img class="absolute" src="https://prium.github.io/Shape/assets/img/illustrations/home/jhiri-1.png" alt="" style="width:8%; right: 75%; top: 25%; ">
           <video
-            class="items-center w-[730px] h-[410px] rounded"
+            class="items-center w-[730px] h-[410px] rounded relative"
             controls
             src="https://prium.github.io/Shape/assets/video/beach.mp4"
           ></video>
           <div class="absolute bg-no-repeat bg-contain" style="background-image: url('https://prium.github.io/Shape/assets/img/bg-img/home-video-bg.png');"></div>
+        </div>
+          
 
         </div>
         <div class="flex justify-around px-5 pt-5 ">

@@ -1,12 +1,12 @@
 <template>
-    <nav class="flex items-center justify-between px-8 py-4 bg-[#0f0f1a] fixed w-full overflow-hidden">
-      <a class="flex-shrink-0">
+    <nav class="flex items-center justify-between px-8 py-4 bg-[#0f0f1a] fixed w-full z-50 ">
+      <a class="flex-shrink-0 pl-5">
         <img src="/assets/logo.png" alt="logo" width="100" />
       </a>
 
-      <div class="flex items-center space-x-6">
+      <div class="flex items-center gap-6">
         <div class="relative group">
-          <button class="text-gray-400 transition-colors hover:text-white">
+          <button class="font-semibold text-gray-500 transition-colors hover:text-white">
             Pages
           </button>
           <div class="absolute left-0 hidden pt-4 group-hover:block">
@@ -31,7 +31,7 @@
         </div>
 
         <div class="relative group">
-          <button class="text-gray-400 transition-colors hover:text-white">
+          <button class="font-semibold text-gray-500 transition-colors hover:text-white">
             Components
           </button>
           <div class="absolute left-0 hidden pt-4 group-hover:block">
@@ -93,7 +93,7 @@
         </div>
 
         <div class="relative group">
-          <button class="text-gray-400 transition-colors hover:text-white">
+          <button class="text-gray-500 font-semibold transition-colors hover:text-white">
             Utilities
           </button>
           <div class="absolute left-0 hidden pt-4 group-hover:block">
@@ -118,7 +118,7 @@
         </div>
 
         <div class="relative group">
-          <button class="text-gray-400 transition-colors hover:text-white">
+          <button class="text-gray-500 font-semibold transition-colors hover:text-white">
             Plugins
           </button>
           <div class="absolute left-0 hidden pt-4 group-hover:block">
@@ -143,7 +143,7 @@
         </div>
 
         <div class="relative group">
-          <button class="text-gray-400 transition-colors hover:text-white">
+          <button class="text-gray-500 font-semibold transition-colors hover:text-white">
             Documentation
           </button>
           <div class="absolute left-0 hidden pt-4 group-hover:block">
@@ -170,12 +170,12 @@
 
       <div class="flex items-center gap-4">
         <a
-          class="px-6 py-2 text-white bg-gray-800 rounded-lg hover:bg-gray-700"
+          class="px-10 py-3 text-l text-white font-semibold bg-gray-800 rounded-lg hover:bg-gray-700"
           href="#!"
           >Sign In</a
         >
         <a
-          class="px-6 py-2 text-white bg-indigo-600 rounded-lg hover:bg-indigo-500"
+          class="px-10 py-3 text-l font-semibold text-white bg-indigo-600 rounded-lg hover:bg-indigo-500"
           href="#!"
           >Purchase</a
         >

@@ -119,7 +119,11 @@
               </div>
             </div>
             <div class="my-10">
-              <a class="text-xl font-semibold text-blue-500 " href="#">View All Integration </a>
+              <a  href="#"><h6 class="text-xl font-semibold text-blue-500 ">View All Integration
+                <!--svg class="w-10" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" enable-background="new 0 0 0 0" xml:space="preserve" height="128" width="128">
+<line fill="none" stroke="#4aaff9" stroke-width="2" stroke-miterlimit="10" x1="26" y1="16" x2="4" y2="16"></line>
+<polyline fill="none" stroke="#4aaff9" stroke-width="2" stroke-miterlimit="10" points="18,7.5 26.5,16 18,24.5 "></polyline>
+</!--svg--></h6>  </a>
             </div>
           </div>
         </div>
