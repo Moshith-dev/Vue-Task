@@ -1,49 +1,87 @@
 <template>
-    <section class="bg-white">
-      <div class="my-20">
-        <div class="flex justify-around px-5">
-          <div class="flex flex-col justify-center gap-2 p-5">
-            <h3 class="text-5xl font-bold text-gray-700">
-              <span>Download It Now! </span> 
-          <span class="absolute w-[81px] h-[70px] " style="background-image: url('https://prium.github.io/Shape/assets/img/illustrations/shapes-13.png'); background-size: contain; background-repeat: no-repeat; background-position: center; transform: translate3d(-20%, -40%, 0); " >
-            
-          </span></h3>
-            <div class="text-gray-500 w-[320px] text-center my-6 px-6">
-              You can get the mobile version of our application from stores for
-              free
-            </div>
-            <div class="flex items-center gap-4">
-              <div class="flex items-center justify-center p-2 bg-indigo-600 rounded">
-                <img class="w-10 h-10 mr-2" src="assets\google-play-svgrepo-com.svg" alt="" style="filter: invert();">
-                <div class="flex-col font-bold">
-                  <p class="text-white text-l">Download On The</p>
-                  <a class="text-white hover:text-gray-300" href="#!">Apple Store</a>
-                </div>
-              </div>
-              <div class="flex items-center justify-center p-2 bg-indigo-600 rounded">
-                <img class="w-10 h-10 mr-2" src="/assets/apple-logo-svgrepo-com.svg" alt="" style="filter: invert();">
-                <div class="flex-col font-bold">
-                  <p class="text-white text-l">Download On The</p>
-                  <a class="text-white hover:text-gray-300" href="#!">Google Play</a>
-                </div>
-              </div>
-              
-              
-            </div>
-            
+  <section class="overflow-hidden bg-white">
+    <div class="my-10 md:my-20">
+     
+      <div class="flex flex-col justify-around gap-8 px-4 md:flex-row md:px-5">
+        
+        <div class="flex flex-col items-center justify-center gap-2 p-4 md:items-start md:p-5">
+          <h3 class="relative text-3xl font-bold text-gray-700 md:text-5xl">
+            <span>Download It Now!</span>
+            <span 
+              class="absolute w-[81px] h-[70px] hidden md:block" 
+              style="
+                background-image: url('https://prium.github.io/Shape/assets/img/illustrations/shapes-13.png'); 
+                background-size: contain; 
+                background-repeat: no-repeat; 
+                background-position: center; 
+                left: 95%;
+                top: -50%;
+              "
+            ></span>
+          </h3>
+
+          <div class="text-gray-500 w-full md:w-[320px] text-center md:text-left my-4 md:my-6 px-4 md:px-6">
+            You can get the mobile version of our application from stores for free
           </div>
-          <div>
-            <img src="/assets/Shape_App.png" alt="download" width="450" />
+
+         
+          <div class="flex flex-col items-center gap-4 sm:flex-row">
+         
+            <div class="flex items-center justify-center w-full p-2 transition-colors bg-indigo-600 rounded sm:w-auto hover:bg-indigo-700 button">
+              <img 
+                class="w-8 h-8 mr-2 md:w-10 md:h-10" 
+                src="assets/google-play-svgrepo-com.svg" 
+                alt="app store" 
+                style="filter: invert();"
+              >
+              <div class="flex-col font-bold">
+                <p class="text-sm text-white p md:text-l">Download On The</p>
+                <a class="text-white hover:text-gray-300" href="#!">Apple Store</a>
+              </div>
+            </div>
+
+       
+            <div class="flex items-center justify-center w-full p-2 transition-colors bg-indigo-600 rounded sm:w-auto hover:bg-indigo-700 button">
+              <img 
+                class="w-8 h-8 mr-2 md:w-10 md:h-10" 
+                src="/assets/apple-logo-svgrepo-com.svg" 
+                alt="google play" 
+                style="filter: invert();"
+              >
+              <div class="flex-col font-bold">
+                <p class="text-sm text-white md:text-l">Download On The</p>
+                <a class="text-white hover:text-gray-300" href="#!">Google Play</a>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="float-right pr-20 mr-10">
-          <img
-            class="img-fluid"
-            src="/assets/ground_shape.png"
-            alt="download"
-            width="700"
+
+   
+        <div class="flex justify-center">
+          <img 
+            src="/assets/Shape_App.png" 
+            alt="download" 
+            class="w-[300px] md:w-[450px] h-auto"
           />
         </div>
       </div>
-    </section>
+
+      
+      <div class="relative w-full mt-10 md:mt-0">
+        <img
+          class="w-full max-w-[700px] ml-auto mr-4 md:mr-10"
+          src="/assets/ground_shape.png"
+          alt="ground shape"
+        />
+      </div>
+    </div>
+  </section>
 </template>
+
+<script setup lang="ts">
+
+</script>
+
+<style scoped>
+
+</style>
