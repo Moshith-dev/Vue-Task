@@ -1,34 +1,56 @@
 <template>
-    <section class="pt-[150px] bg-black " >
-      <div class="items-center pt-2 col">
-        <h1 class="text-6xl font-medium text-center text-white capitalize">
-          An attractive landing <br />
-          for your mobile app.
-        </h1>
-        <p class="my-10 text-2xl text-center text-gray-500 capitalize">
-          The fastest way to assemble beautiful screens and then <br />
-          output clean, reusable code.
-        </p>
-        <div class="flex justify-center">
-          <input
-            type="email"
-            placeholder="Your Email"
-            class="px-6 py-4 text-lg font-bold bg-gray-800 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-          <button
-            class="px-6 py-4 ml-10 text-lg font-bold text-white bg-indigo-600 rounded hover:bg-indigo-500"
-          >
-            Get Access
-          </button>
+  <section class="pt-[100px] bg-black relative">
+    <div class="relative bg-center bg-no-repeat bg-contain" style="background-image:url('https://prium.github.io/Shape/assets/img/bg-img/home-header.png');">
+      <div class="relative overflow-visible bg-bottom bg-no-repeat bg-contain" style="background-image: url('https://prium.github.io/Shape/assets/img/bg-img/appland_bg_companies.svg');">
+        <div class="items-center px-4 pt-2 md:px-6 lg:px-8">
+          <h1 class="text-3xl font-medium text-center text-white capitalize md:text-4xl lg:text-6xl">
+            An attractive landing <br class="hidden md:block" />
+            for your mobile app.
+          </h1>
+          <p class="my-6 text-lg text-center text-gray-500 capitalize md:my-10 md:text-xl lg:text-2xl">
+            The fastest way to assemble beautiful screens and then <br class="hidden md:block" />
+            output clean, reusable code.
+          </p>
+          <div class="relative flex flex-col justify-center gap-4 pb-10 md:flex-row md:gap-0 md:pb-20">
+            <input type="email" placeholder="Your Email"
+              class="w-full px-4 py-3 text-base font-bold bg-gray-800 rounded md:w-auto md:px-6 md:py-4 lg:text-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            <button class="w-full px-4 py-3 text-base font-bold text-white bg-indigo-600 rounded md:w-auto md:px-6 md:py-4 md:ml-10 lg:text-lg button hover:bg-indigo-500">
+              Get Access
+            </button>
+          </div>
+          
+          <div class="relative flex flex-row items-center justify-center">
+            <div class="flex">
+              <!-- Decorative images with responsive positioning -->
+              <img class="absolute w-[8%] md:w-[8%] top-[5%] left-[5%] md:left-[18%]" 
+                src="https://prium.github.io/Shape/assets/img/illustrations/home/appland_shapes2.png" alt="">
+              <img class="absolute w-[10%] md:w-[10%] top-[13%] right-[5%] md:right-[13%]" 
+                src="https://prium.github.io/Shape/assets/img/illustrations/home/appland_shapes4.png" alt="">
+              <img class="absolute w-[8%] md:w-[8%] top-[60%] left-[5%] md:left-[15%]" 
+                src="https://prium.github.io/Shape/assets/img/illustrations/home/appland_shapes3.png" alt="">
+              
+              <img class="w-full max-w-[800px] relative" 
+                src="https://prium.github.io/Shape/assets/img/gallery/iPad-Pro-Mockup.png" alt="">
+            </div>
+          </div>
+
+          <div class="relative py-10 md:py-10">
+            <div class="flex-row justify-center">
+              <p class="text-sm font-bold text-center text-gray-500 capitalize md:text-base">
+                Trusted by companies like this
+              </p>
+              <div class="flex justify-center gap-3 py-5 my-5">
+                <img src="https://prium.github.io/Shape/assets/img/logos/airbnb-logo.png" alt="" width="200px">
+                <img src="https://prium.github.io/Shape/assets/img/logos/google-logo.png" alt="" width="200px">
+                <img src="https://prium.github.io/Shape/assets/img/logos/Spotify_Logo.png" alt="" width="200px">
+                <img src="https://prium.github.io/Shape/assets/img/logos/microsoft-logo.png" alt="" width="200px">
+                <img src="https://prium.github.io/Shape/assets/img/logos/Paypal-logo.png" alt="" width="200px">
+
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    <div class="justify-center mt-5 row">
-      <p class="font-bold text-center text-gray-500 capitalize">trusted by companies like this</p>
-
     </div>
-    
-    </section>
+  </section>
 </template>
-
-<script setup>
-</script>
