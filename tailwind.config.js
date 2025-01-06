@@ -10,7 +10,17 @@ export default {
     "./assets/main.css",
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        scroll: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(calc(-250px * 5))' }
+        }
+      },
+      animation: {
+        scroll: 'scroll 40s linear infinite'
+      }
+    },
   },
   plugins: [],
 }

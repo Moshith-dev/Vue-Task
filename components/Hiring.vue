@@ -92,13 +92,3 @@
   </section>
 </template>
 
-<style scoped>
-.transition-colors {
-  transition: all 0.3s ease-in-out;
-}
-
-button:hover {
-  transform: translateY(-2px);
-  transition: transform 0.2s ease-in-out;
-}
-</style>

@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex items-center justify-between px-4 md:px-8 py-4 bg-[#0f0f1a] fixed w-full z-30">
+  <nav class="flex items-center justify-between px-4 md:px-8 py-4 bg-[#0f0f1a] z-[99999] fixed  w-full">
     <a class="flex-shrink-0 pl-2 md:pl-5">
       <img src="/assets/logo.png" alt="logo" width="100" />
     </a>

@@ -1,12 +1,12 @@
 <template>
-  <section class="bg-gradient-to-b from-white via-slate-950 to-gray-950">
+  <section class="" style="background: linear-gradient(to bottom, white 30%, rgb(3 7 18 / var(--tw-bg-opacity, 1)) 70%)">
     <div class="relative bg-no-repeat bg-cover md:py-[150px]" 
          style="background-image: url('https://prium.github.io/Shape/assets/img/bg-img/by-its-default.svg');">
          
       <div class="container pl-4 mx-auto">
         <div class="flex flex-col items-center justify-around lg:flex-row">
           <!-- Content Section -->
-          <div class="flex flex-col justify-center gap-3 ">
+          <div class="flex flex-col justify-center gap-3 anim-slide-right">
             <h3 class="text-3xl font-semibold text-white md:text-5xl">
               It's Stylish by default.
             </h3>
@@ -48,7 +48,7 @@
           </div>
 
           <!-- Image Section -->
-          <div class="relative w-full lg:w-1/2">
+          <div class="relative w-full lg:w-1/2 anim-slide-left">
             <!-- Decorative Images -->
             <img 
               class="absolute hidden md:block" 
@@ -88,5 +88,34 @@
 </script>
 
 <style scoped>
+@keyframes slideleft {
+  0% {
+    transform: translateX(45%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
 
+.anim-slide-left {
+  animation: slideleft 3s ease-in  backwards;
+
+}
+@keyframes slideright {
+  0% {
+    transform: translateX(-45%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+.anim-slide-right {
+  animation: slideright 3s ease  backwards;
+
+}
 </style>

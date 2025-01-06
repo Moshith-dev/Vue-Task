@@ -2,7 +2,7 @@
   <section class="relative pb-10 md:py-10 md:pt-20 bg-gray-950 ">
     <div class="container px-4 mx-auto">
       <div class="flex flex-col items-center gap-8 md:flex-row md:justify-around md:px-10">
-        <div class="w-full md:w-[45%] order-2 md:order-1">
+        <div class="w-full md:w-[45%] order-2 md:order-1 anim-slide-right">
           <svg class="w-full h-auto" viewBox="0 0 587 429" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <path d="M360.547 427.465L250.513 411.354C237.546 409.456 224.927 405.665 213.059 400.103L186.015 387.428C145.323 368.356 122.323 324.508 129.763 280.189C134.557 251.635 151.477 226.554 176.158 211.417L221.275 183.745C242.047 171.004 267.654 168.949 290.192 178.212C315.033 188.422 343.754 184.568 365.261 168.482C380.637 156.981 399.967 151.414 419.088 153.176L427.519 153.952C469.544 157.824 504.568 187.759 514.938 228.668L521.106 253.003C534.055 304.083 515.862 358.01 474.618 390.809L463.363 399.759C434.389 422.8 397.175 432.828 360.547 427.465Z" fill="#FEB850"></path>
             <mask id="mask1" style="mask-type: alpha;" maskUnits="userSpaceOnUse" x="0" y="0" width="557" height="420">
@@ -20,7 +20,7 @@
           </svg>
         </div>
 
-        <div class="w-full md:w-[50%] px-1 py-5 md:py-10 order-1 md:order-2">
+        <div class="w-full md:w-[50%] px-1 py-5 md:py-10 order-1 md:order-2 anim-slide-left">
           <h3 class="text-3xl font-semibold text-white md:text-5xl">
             Fits Into Any Workflow.
           </h3>
@@ -99,7 +99,7 @@
           <div class="my-6 md:my-10">
             <a href="#" class="inline-flex items-center group">
               <h6 class="text-lg font-semibold text-blue-500 transition-colors md:text-xl group-hover:text-blue-400">
-                View All Integration
+                View All Integration <span>🡪</span>
               </h6>
             </a>
           </div>
@@ -113,6 +113,36 @@
 
 </script>
 
-<style scoped>
 
+<style scoped>
+@keyframes slideleft {
+  0% {
+    transform: translateX(45%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+.anim-slide-left {
+  animation: slideleft 3s ease-in  backwards;
+
+}
+@keyframes slideright {
+  0% {
+    transform: translateX(-45%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+.anim-slide-right {
+  animation: slideright 3s ease  backwards;
+
+}
 </style>

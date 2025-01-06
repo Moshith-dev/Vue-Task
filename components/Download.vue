@@ -4,7 +4,7 @@
      
       <div class="flex flex-col justify-around gap-8 px-4 md:flex-row md:px-5">
         
-        <div class="flex flex-col items-center justify-center gap-2 p-4 md:items-start md:p-5">
+        <div class="flex flex-col items-center justify-center gap-2 p-4 md:items-start md:p-5 anim-slide-right">
           <h3 class="relative text-3xl font-bold text-gray-700 md:text-5xl">
             <span>Download It Now!</span>
             <span 
@@ -35,7 +35,7 @@
                 style="filter: invert();"
               >
               <div class="flex-col font-bold">
-                <p class="text-sm text-white p md:text-l">Download On The</p>
+                <p class=" text-sm text-white md:text-l">Download On The</p>
                 <a class="text-white hover:text-gray-300" href="#!">Apple Store</a>
               </div>
             </div>
@@ -55,9 +55,9 @@
             </div>
           </div>
         </div>
-
+ 
    
-        <div class="flex justify-center">
+        <div class="flex justify-center anim-slide-left">
           <img 
             src="/assets/Shape_App.png" 
             alt="download" 
@@ -82,6 +82,36 @@
 
 </script>
 
-<style scoped>
 
+<style scoped>
+@keyframes slideleft {
+  0% {
+    transform: translateX(45%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+.anim-slide-left {
+  animation: slideleft 3s ease-in  backwards;
+
+}
+@keyframes slideright {
+  0% {
+    transform: translateX(-45%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+.anim-slide-right {
+  animation: slideright 3s ease  backwards;
+
+}
 </style>

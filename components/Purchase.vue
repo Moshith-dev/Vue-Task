@@ -6,7 +6,7 @@
     >
       <div class="container px-4 py-8 mx-auto md:px-8 md:py-10">
         <!-- Heading -->
-        <h3 class="relative inline-block mb-6 text-2xl font-bold text-white md:mb-8 md:text-3xl lg:text-4xl">
+        <h3 class="relative inline-block mb-6 text-2xl font-bold text-white md:mb-8 md:text-3xl lg:text-4xl anim-slide-up">
           <span>Start Building Your Website</span>
           <span 
             class="absolute w-[60px] md:w-[81px] h-[50px] md:h-[70px] hidden md:block" 
@@ -22,7 +22,7 @@
         </h3>
 
        
-        <div class="flex justify-center mt-4 md:mt-6">
+        <div class="flex justify-center mt-4 md:mt-6 anim-slide-up">
           <a
             href="#!"
             class="inline-block px-6 py-2 text-base font-medium text-gray-500 transition-all duration-300 ease-in-out bg-white rounded-lg shadow-sm md:px-8 md:py-3 md:text-lg hover:bg-gray-300 "
@@ -36,5 +36,19 @@
 </template>
 
 <style scoped>
+@keyframes slideUp {
+  0% {
+    transform: translateY(70%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
 
+.anim-slide-up {
+  animation: slideUp 3s ease  backwards;
+
+}
 </style>

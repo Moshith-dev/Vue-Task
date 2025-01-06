@@ -56,3 +56,150 @@ h1,h2,h3,h4,h5,h6{
 .p{
     font-size: larger;
 }
+
+section{
+    position: relative;
+}
+.z{
+    z-index: 1;
+}
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.controls-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 2;
+}
+
+.play-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 0;
+}
+
+.progress-bar {
+    flex-grow: 1;
+    height: 4px;
+    background: rgba(255,255,255,0.3);
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.progress {
+    height: 100%;
+    background: #fff;
+    width: 0%;
+    border-radius: 2px;
+}
+
+.time {
+    color: white;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+}
+
+.settings-button, .fullscreen-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+}
+
+.center-play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+    z-index: 2;
+}
+
+.center-play-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.center-play-button svg {
+    width: 30px;
+    height: 30px;
+    fill: white;
+}
+
+.settings-menu {
+    position: absolute;
+    bottom: 60px;
+    right: 10px;
+    background: rgba(28, 28, 28, 0.9);
+    border-radius: 8px;
+    padding: 8px 0;
+    display: none;
+    z-index: 3;
+}
+
+.settings-menu.active {
+    display: block;
+}
+
+.settings-menu button {
+    display: block;
+    width: 100%;
+    padding: 8px 15px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.settings-menu button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.video-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.hide {
+    display: none;
+}

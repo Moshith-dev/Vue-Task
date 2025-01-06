@@ -8,7 +8,7 @@
       <div class="relative inset-0 bg-black bg-opacity-10"></div>
       
       <div class="relative flex justify-end h-full " >
-        <img class="my-5 " src="https://prium.github.io/Shape/assets/img/illustrations/shapes-20.png" alt="" style="object-fit: contain;">
+        <img class="my-5 anim-slide-right" src="https://prium.github.io/Shape/assets/img/illustrations/shapes-20.png" alt="" style="object-fit: contain;">
         <div class="px-10 text-center py-9" style="background-image: url('https://prium.github.io/Shape/assets/img/bg-img/appland_bg12.png'); background-position: center; background-size: cover;">
           
           <h3 class="text-5xl font-bold text-white">
@@ -34,3 +34,22 @@
     
     </section>
 </template>
+
+<style scoped>
+@keyframes slideright {
+  0% {
+    transform: translateX(-45%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+.anim-slide-right {
+  animation: slideright 3s ease  backwards;
+
+}
+
+</style>

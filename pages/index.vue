@@ -2,7 +2,7 @@
   <main id="top" class="bg-white">
     <Navbar/>
     <!--first section-->
-    <Home/>
+    <Home />
 
     <!--Video-->
 
