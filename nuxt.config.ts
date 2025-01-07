@@ -14,4 +14,18 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  app: {
+    head: {
+      title: 'Shape', // Default title for all pages
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { hid: 'description', name: 'description', content: 'My default description' }
+      ],
+      link: [
+        { rel: 'icon', type: 'image/ico', href: 'shape-icon.ico' } // Path to your favicon
+      ]
+    }
+  }
 })
+

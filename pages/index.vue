@@ -41,6 +41,8 @@ import Access from '~/components/Access.vue';
 import Hiring from '~/components/Hiring.vue';
 import Workflow from '~/components/Workflow.vue';
 import Feature from '~/components/Feature.vue';
+
+
 </script>
 
 <style scoped>
