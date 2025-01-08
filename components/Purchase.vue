@@ -35,20 +35,41 @@
   </section>
 </template>
 
+<script setup lang="ts">
+import { onMounted } from 'vue';
+
+
+onMounted(() => {
+    const animatedSections = document.querySelectorAll(".anim-slide-up");
+
+    const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate");
+          observer.unobserve(entry.target); // Unobserve to trigger the animation only once
+        }
+      });
+    },
+    { threshold: 0.5 } // Trigger when 50% of the element is visible
+  );
+
+  animatedSections.forEach((section) => observer.observe(section));
+});
+
+</script>
+
+
 <style scoped>
-@keyframes slideUp {
-  0% {
-    transform: translateY(70%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0%);
-    opacity: 1;
-  }
-}
-
 .anim-slide-up {
-  animation: slideUp 3s ease  backwards;
-
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
+
+.anim-slide-up.animate{
+opacity: 1;
+transform: translateY(0);
+}
+
 </style>

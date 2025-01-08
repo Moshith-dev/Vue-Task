@@ -1,33 +1,35 @@
 <template>
-  <section class="bg-gray-950 pt-20 ">
+  <section class="bg-gray-950 pt-20">
     <div class="z" style="position: relative; background-image:
                           url('https://prium.github.io/Shape/assets/img/bg-img/home-header.png'); background-position: center;
                           background-repeat: no-repeat; background-size: cover;">
       <div class=" w-[100%] h-full"
         style="background-image: url('https://prium.github.io/Shape/assets/img/bg-img/appland_bg_companies.svg');  background-position: bottom; background-repeat: no-repeat; background-size: contain; position: relative; ">
   
-        <div class="flex flex-col items-center pt-[100px]">
-          <h1 class="relative font-medium text-white md:text-6xl anim-slide-up">
+        <div class="flex flex-col items-center pt-[120px]  gap-3">
+          <h1 class="relative font-medium text-white md:text-[75px] leading-[70px] anim-slide-up text-center">
             An attractive landing
-            <span class="absolute w-[81px] h-[70px] hidden md:block" style="
+            <span class="absolute hidden md:block" style="
                               background-image: url('https://prium.github.io/Shape/assets/img/illustrations/shapes-13.png'); 
                               background-size: contain; 
                               background-repeat: no-repeat; 
                               background-position: center; 
-                              left: 96%;
-                              top: -20%;
+                              left: 93%;
+                              top: -28%;
+                              width: 150px;
+                              height: 100px;
                             "></span><br>
             for your mobile app.
           </h1>
-          <p class="my-6 text-lg text-center text-gray-500 capitalize md:my-10 md:text-xl lg:text-2xl anim-slide-up">
+          <p class="my-6 text-4xl text-center text-gray-500 capitalize md:my-10 md:text-3xl lg:text-3xl anim-slide-up">
             The fastest way to assemble beautiful screens and then <br class="hidden md:block" />
             output clean, reusable code.
           </p>
           <div class="relative flex flex-col justify-center gap-4 pb-10 md:flex-row md:gap-0 md:pb-20 anim-slide-up">
             <input type="email" placeholder="Your Email"
-              class="w-full px-4 py-3 text-base font-bold bg-gray-800 rounded md:w-auto md:px-6 md:py-4 lg:text-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+              class="w-full px-4 py-3 text-base font-bold bg-[#2f314b] rounded md:w-auto md:px-12 md:py-6 lg:text-[22px] focus:outline-none focus:ring-2 focus:ring-indigo-500" />
             <button
-              class="w-full px-4 py-3 text-base font-bold text-white bg-indigo-600 rounded md:w-auto md:px-6 md:py-4 md:ml-10 lg:text-lg button hover:bg-indigo-500">
+              class="w-full px-4 py-3 text-base font-bold text-white bg-indigo-600 rounded md:w-auto md:px-10 md:py-6 md:ml-10 lg:text-[22px]  hover:bg-indigo-500">
               Get Access
             </button>
           </div>
@@ -41,7 +43,7 @@
               <img class="absolute w-[8%] md:w-[8%] top-[60%] left-[%] md:left-[15%] anim-slide-up"
                 src="https://prium.github.io/Shape/assets/img/illustrations/home/appland_shapes3.png" alt="">
   
-              <img class="w-full max-w-[760px] relative anim-slide-up"
+              <img class="w-full max-w-[920px] relative anim-slide-up"
                 src="https://prium.github.io/Shape/assets/img/gallery/iPad-Pro-Mockup.png" alt="">
             </div>
           </div>
@@ -101,6 +103,8 @@
 <script lang="ts">
 import { defineComponent, ref, computed, onMounted, onBeforeUnmount } from 'vue'
 
+  
+
 interface Logo {
   name: string
   src: string
@@ -109,6 +113,25 @@ interface Logo {
 export default defineComponent({
   name: 'LogoCarousel',
   setup() {
+
+    onMounted(() => {
+    const animatedSections = document.querySelectorAll(".anim-slide-up");
+
+    const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate");
+          observer.unobserve(entry.target); // Unobserve to trigger the animation only once
+        }
+      });
+    },
+    { threshold: 0.5 } // Trigger when 50% of the element is visible
+  );
+
+  animatedSections.forEach((section) => observer.observe(section));
+});
+
     const logos: Logo[] = [
       { name: 'Microsoft', src: 'https://prium.github.io/Shape/assets/img/logos/airbnb-logo.png' },
       { name: 'Airbnb', src: 'https://prium.github.io/Shape/assets/img/logos/google-logo.png' },
@@ -209,20 +232,17 @@ export default defineComponent({
 </script>
 
 <style scoped>
-@keyframes slideUp {
-  0% {
-    transform: translateY(20%);
-    opacity: 0;
-  }
 
-  100% {
-    transform: translateY(0%);
-    opacity: 1;
-  }
-}
 
 .anim-slide-up {
-  animation: slideUp 3s ease backwards;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.anim-slide-up.animate{
+opacity: 1;
+transform: translateY(0);
 }
 
 .logo-carousel {

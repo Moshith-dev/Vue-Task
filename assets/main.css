@@ -14,6 +14,7 @@ template {
     display: none
 }
 section,nav,div,footer{
+    font-family: 'Poppins', sans-serif;
     display: block;
 }
 .h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
@@ -26,6 +27,7 @@ section,nav,div,footer{
 h1,h2,h3,h4,h5,h6 {
     margin-top: 0;
     margin-bottom: .5rem
+    
 }
 
 p {

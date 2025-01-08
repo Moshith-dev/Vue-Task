@@ -10,8 +10,11 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@types/jquery": "^3.5.32",
     "@vueuse/nuxt": "^12.3.0",
+    "jquery": "^3.7.1",
     "nuxt": "^3.15.0",
+    "owl.carousel": "^2.3.4",
     "vue": "^3.5.13",
     "vue-router": "latest"
   },

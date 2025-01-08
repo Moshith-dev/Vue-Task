@@ -41,11 +41,11 @@
     <img
       src="https://prium.github.io/Shape/assets/img/bg-img/home-video-bg.png"
       alt="Video thumbnail"
-      class="video-cover w-[650px]"
+      class="video-cover w-[700px]"
       :class="{ hide: isPlaying }"
       ref="videoCover"
     />
-    <video class="w-[650px]"
+    <video class="w-[700px]"
       ref="video"
       src="https://prium.github.io/Shape/assets/video/beach.mp4"
       preload="metadata"
@@ -285,23 +285,36 @@ onMounted(() => {
 onUnmounted(() => {
   document.removeEventListener('click', handleClickOutside)
 })
+
+onMounted(() => {
+    const animatedSections = document.querySelectorAll(".anim-slide-up");
+
+    const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate");
+          observer.unobserve(entry.target); // Unobserve to trigger the animation only once
+        }
+      });
+    },
+    { threshold: 0.5 } // Trigger when 50% of the element is visible
+  );
+
+  animatedSections.forEach((section) => observer.observe(section));
+});
 </script>
 
 
 <style scoped>
-@keyframes slideUp {
-  0% {
-    transform: translateY(45%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0%);
-    opacity: 1;
-  }
+.anim-slide-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.anim-slide-up {
-  animation: slideUp 3s ease-in  backwards;
-
+.anim-slide-up.animate{
+opacity: 1;
+transform: translateY(0);
 }
 </style>

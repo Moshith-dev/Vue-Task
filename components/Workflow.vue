@@ -109,40 +109,56 @@
   </section>
 </template>
 
-<script setup lang="ts">
 
+<script setup lang="ts">
+import { onMounted } from 'vue';
+
+
+onMounted(() => {
+    const animatedSections = document.querySelectorAll(".anim-slide-left");
+    const animsection2 = document.querySelectorAll(".anim-slide-right");
+
+    const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate");
+          observer.unobserve(entry.target); // Unobserve to trigger the animation only once
+        }
+      });
+    },
+    { threshold: 0.5 } // Trigger when 50% of the element is visible
+  );
+
+  animatedSections.forEach((section) => observer.observe(section));
+  animsection2.forEach((section) => observer.observe(section));
+  
+});
 </script>
 
 
+
 <style scoped>
-@keyframes slideleft {
-  0% {
-    transform: translateX(45%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0%);
-    opacity: 1;
-  }
-}
-
 .anim-slide-left {
-  animation: slideleft 3s ease-in  backwards;
-
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
-@keyframes slideright {
-  0% {
-    transform: translateX(-45%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0%);
-    opacity: 1;
-  }
+
+.anim-slide-left.animate{
+opacity: 1;
+transform: translateX(0);
 }
 
 .anim-slide-right {
-  animation: slideright 3s ease  backwards;
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
 
+.anim-slide-right.animate{
+opacity: 1;
+transform: translateX(0);
 }
 </style>
+

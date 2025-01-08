@@ -1,7 +1,7 @@
 <template>
-  <nav class="flex items-center justify-between px-4 md:px-8 py-4 bg-[#0f0f1a] z-[99999] fixed  w-full">
-    <a class="flex-shrink-0 pl-2 md:pl-5">
-      <img src="/assets/logo.png" alt="logo" width="100" />
+  <nav class="flex items-center justify-center gap-12  px-4 md:px-5 py-5 bg-gray-950 z-[99999] fixed  w-full">
+    <a class="flex-shrink-0  ml-10 pl-5 mr-5">
+      <img src="/assets/logo.png" alt="logo" width="125" />
     </a>
 
     <!-- Mobile menu button -->
@@ -13,12 +13,11 @@
     </button>
 
     <!-- Desktop Navigation -->
-    <div class="items-center hidden gap-6 md:flex">
+    <div class="items-center hidden gap-3 md:flex ml-28 ">
       <!-- Existing dropdown menus remain unchanged -->
       <div v-for="(menu, index) in menus" :key="index" class="relative group">
-        <button class="font-semibold text-gray-500 transition-colors hover:text-white">
-          {{ menu.title }}
-        </button>
+        <button class="text-[22px] font-light flex text-gray-400 transition-colors hover:text-white ">
+          {{ menu.title }} <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#9ca3af"><path d="M480-360 280-560h400L480-360Z"/></svg> </button>
         <div class="absolute left-0 hidden pt-4 group-hover:block">
           <div :class="[
             'bg-[#ffffff] rounded-lg shadow-lg py-2',
@@ -27,7 +26,7 @@
             <a v-for="(item, i) in menu.items" :key="i"
               href="#"
               :class="[
-                'text-gray-400 hover:text-white hover:bg-[#2f2f3f] rounded',
+                'text-gray-700 hover:text-white hover:bg-[#2f2f3f] rounded text-l',
                 menu.title === 'Components' ? 'px-1 py-1' : 'block px-4 py-2'
               ]"
             >{{ item }}</a>
@@ -61,10 +60,10 @@
     </div>
 
     <!-- Action Buttons -->
-    <div class="items-center hidden gap-4 md:flex">
-      <a class="px-6 py-3 font-semibold text-white bg-gray-800 rounded-lg lg:px-10 text-l hover:bg-gray-700"
+    <div class="items-center hidden gap-4 md:flex mr-10 ml-5">
+      <a class="px-10 py-3 font-semibold text-white bg-gray-700 rounded-lg lg:px-10 text-[18px] hover:bg-gray-500"
         href="#!">Sign In</a>
-      <a class="px-6 py-3 font-semibold text-white bg-indigo-600 rounded-lg lg:px-10 text-l hover:bg-indigo-500"
+      <a class="px-10 py-3 font-semibold text-white bg-indigo-600 rounded-lg lg:px-10 text-[18px] hover:bg-indigo-500"
         href="#!">Purchase</a>
     </div>
   </nav>
@@ -82,7 +81,7 @@ const toggleSubmenu = (index: number) => {
 
 const menus = [
   {
-    title: 'Pages',
+    title: 'Pages ',
     items: ['Dashboard', 'Settings', 'Profile']
   },
   {

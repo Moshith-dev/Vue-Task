@@ -50,7 +50,7 @@
           </div>
         </div>
 
-        <div class="text-center md:text-left lg:col-span-1">
+        <div class="text-center md:text-left lg:col-span-1 anim-slide-left">
           <h2 class="mb-4 text-xl font-semibold text-white md:mb-6 md:text-2xl">
             Subscribe
           </h2>
@@ -100,6 +100,41 @@
   </footer>
 </template>
 
+<script setup lang="ts">
+import { onMounted } from 'vue';
+
+
+onMounted(() => {
+    const animatedSections = document.querySelectorAll(".anim-slide-left");
+
+    const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate");
+          observer.unobserve(entry.target); // Unobserve to trigger the animation only once
+        }
+      });
+    },
+    { threshold: 0.5 } // Trigger when 50% of the element is visible
+  );
+
+  animatedSections.forEach((section) => observer.observe(section));
+});
+
+</script>
+
+
 <style scoped>
+.anim-slide-left {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.anim-slide-left.animate{
+opacity: 1;
+transform: translateX(0);
+}
 
 </style>
