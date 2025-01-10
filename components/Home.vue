@@ -1,13 +1,13 @@
 <template>
-  <section class="bg-gray-950 pt-20">
-    <div class="z" style="position: relative; background-image:
+  <section class="bg-gray-950 pt-20 ">
+    <div class="z " style="position: relative; background-image:
                           url('https://prium.github.io/Shape/assets/img/bg-img/home-header.png'); background-position: center;
                           background-repeat: no-repeat; background-size: cover;">
       <div class=" w-[100%] h-full"
         style="background-image: url('https://prium.github.io/Shape/assets/img/bg-img/appland_bg_companies.svg');  background-position: bottom; background-repeat: no-repeat; background-size: contain; position: relative; ">
   
-        <div class="flex flex-col items-center pt-[120px]  gap-3">
-          <h1 class="relative font-medium text-white md:text-[75px] leading-[70px] anim-slide-up text-center">
+        <div class="flex flex-col items-center pt-[130px]  mt-8  gap-3">
+          <h1 class=" font-medium text-white md:text-[75px] leading-[70px] anim-slide-up text-center ">
             An attractive landing
             <span class="absolute hidden md:block" style="
                               background-image: url('https://prium.github.io/Shape/assets/img/illustrations/shapes-13.png'); 
@@ -34,7 +34,7 @@
             </button>
           </div>
   
-          <div class="-z-10">
+          <div class="-z-10 px-10">
             <div class="flex flex-col items-center justify-center">
               <img class="absolute w-[13%] md:w-[8%] top-[35%] left-[5%] md:left-[18%] anim-slide-up"
                 src="https://prium.github.io/Shape/assets/img/illustrations/home/appland_shapes2.png" alt="">
@@ -43,7 +43,7 @@
               <img class="absolute w-[8%] md:w-[8%] top-[60%] left-[%] md:left-[15%] anim-slide-up"
                 src="https://prium.github.io/Shape/assets/img/illustrations/home/appland_shapes3.png" alt="">
   
-              <img class="w-full max-w-[920px] relative anim-slide-up"
+              <img class="w-full max-w-[950px] relative anim-slide-up"
                 src="https://prium.github.io/Shape/assets/img/gallery/iPad-Pro-Mockup.png" alt="">
             </div>
           </div>

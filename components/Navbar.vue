@@ -61,9 +61,9 @@
 
     <!-- Action Buttons -->
     <div class="items-center hidden gap-4 md:flex mr-10 ml-5">
-      <a class="px-10 py-3 font-semibold text-white bg-gray-700 rounded-lg lg:px-10 text-[18px] hover:bg-gray-500"
+      <a class="px-11 py-3 font-semibold text-white bg-[#2f314b] rounded-lg lg:px-10 text-[18px] hover:bg-gray-500"
         href="#!">Sign In</a>
-      <a class="px-10 py-3 font-semibold text-white bg-indigo-600 rounded-lg lg:px-10 text-[18px] hover:bg-indigo-500"
+      <a class="px-11 py-3 font-semibold text-white bg-indigo-600 rounded-lg lg:px-10 text-[18px] hover:bg-indigo-500"
         href="#!">Purchase</a>
     </div>
   </nav>
