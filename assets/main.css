@@ -1,13 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
+
+
 *{
-    font-family: 'Poppins', sans-serif;
+    
     box-sizing: border-box;
 }
 body{
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     background-color: white;
 }
 template {
@@ -68,7 +74,7 @@ section{
 .video-wrapper {
     position: relative;
     width: 100%;
-    max-width: 650px;
+    max-width: 900px;
     margin: 0 auto;
     background: #000;
     border-radius: 12px;

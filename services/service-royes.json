@@ -1,0 +1,24 @@
+{
+    "home": {
+      "Footer": {
+        "endpoint": "contactus",
+        "method": "GET"
+      },
+      "Logos": {
+        "endpoint": "icons",
+        "method": "GET"
+      },
+      "content": {
+        "endpoint": "pagecontent",
+        "method": "GET"
+      },
+      "MenuList": {
+        "endpoint": "menu",
+        "method": "GET"
+      },
+      "EmployeeList": {
+        "endpoint": "employees",
+        "method": "GET"
+      }
+    }
+  }

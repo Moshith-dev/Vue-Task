@@ -8,6 +8,7 @@ export default {
     "./app.vue",
     "./error.vue",
     "./assets/main.css",
+    
   ],
   theme: {
     extend: {
@@ -19,9 +20,12 @@ export default {
       },
       animation: {
         scroll: 'scroll 40s linear infinite'
-      }
+      },
+       fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
+      },
     },
   },
-  plugins: [],
+ 
 }
 

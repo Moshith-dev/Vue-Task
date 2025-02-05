@@ -1,177 +1,28 @@
-<template>
-    <section class="relative bg-white">
-  <div class="px-4 py-8 md:py-20 md:px-20">
-    <!-- Header Text -->
-    <div class="flex flex-col py-2 mx-2 my-3 text-center md:mx-5 md:my-5">
-      <h3 class="text-2xl font-bold text-gray-900 md:text-4xl anim-slide-up">
-        Start with our design and give 
-        <br class="hidden md:block" />
-        your app a fresh look.
-      </h3>
-      <p class="mt-4 text-sm text-gray-500 md:mt-7 md:text-base anim-slide-up">
-        Updating branding in your app is now easier than ever with our design system. 
-        <br class="hidden md:block" />
-        The Shape allows you to make changes to your colors, icons within your app.
-      </p>
-    </div>
-
-    <!-- Video Section -->
-    <div class="relative flex justify-center py-5 mx-2 my-5 md:py-10 md:mx-10 md:my-10">
-      <!-- Decorative Images - Hidden on mobile -->
-      <img 
-        class="absolute hidden md:block" 
-        src="https://prium.github.io/Shape/assets/img/illustrations/home/home-vector-1.png" 
-        alt="" 
-        style="left:10%; width:16%; top:1%;"
-      >
-      <img 
-        class="absolute hidden md:block" 
-        src="https://prium.github.io/Shape/assets/img/illustrations/home/jhiri-1.png" 
-        alt="" 
-        style="left:10%; width:11%; top:-5%;"
-      >
-      <img 
-        class="absolute hidden md:block" 
-        src="https://prium.github.io/Shape/assets/img/illustrations/home/home-vector-2.png" 
-        alt="" 
-        style="right: 10%; width:20%; top:1%;"
-      >
-      
-      <div class="video-wrapper anim-slide-up">
-    <img
-      src="https://prium.github.io/Shape/assets/img/bg-img/home-video-bg.png"
-      alt="Video thumbnail"
-      class="video-cover w-[700px]"
-      :class="{ hide: isPlaying }"
-      ref="videoCover"
-    />
-    <video class="w-[700px]"
-      ref="video"
-      src="https://prium.github.io/Shape/assets/video/beach.mp4"
-      preload="metadata"
-      @click="togglePlay"
-      @timeupdate="updateProgress"
-      @ended="handleVideoEnd"
-    >
-    </video>
-    
-    <button
-      class="center-play-button"
-      :class="{ hide: isPlaying }"
-      @click="startPlay"
-    >
-      <svg viewBox="0 0 24 24">
-        <path d="M8 5v14l11-7z" />
-      </svg>
-    </button>
-
-    <div class="controls-wrapper">
-      <button class="play-button" @click="togglePlay">
-        {{ isPlaying ? '⏸' : '▶' }}
-      </button>
-      
-      <div
-        class="progress-bar"
-        ref="progressBar"
-        @click="seek"
-      >
-        <div
-          class="progress"
-          :style="{ width: `${progress}%` }"
-        />
-      </div>
-
-      <span class="time">{{ formattedTime }}</span>
-      
-      <button
-        class="settings-button"
-        @click.stop="toggleSettings"
-      >
-        ⚙️
-      </button>
-      
-      <button
-        class="fullscreen-button"
-        @click="toggleFullscreen"
-      >
-        ⛶
-      </button>
-
-      <div
-        v-show="showSettings"
-        class="settings-menu"
-        ref="settingsMenu"
-      >
-        <button @click="changePlaybackSpeed">
-          Speed: {{ currentSpeed }}x
-        </button>
-        <button @click="toggleCaptions">
-          Captions: {{ captionsEnabled ? 'On' : 'Off' }}
-        </button>
-      </div>
-    </div>
-  </div>
-    </div>
-
-    
-    <div class="flex flex-col justify-around gap-6 px-2 pt-5 mx-10 md:flex-row md:px-5">
-      
-      <div class="flex items-start gap-3 p-1 md:items-center">
-        <img
-          class="w-10 md:w-[70px]"
-          src="https://prium.github.io/Shape/assets/img/icons/icon-1.png"
-          alt="download "
-        />
-        <div class="flex-1">
-          <p class="text-xl font-semibold text-gray-700 md:text-2xl">
-            Create your account in Shape
-          </p>
-          <p class="mt-2 text-sm text-gray-500 md:text-base">
-            its easy, simple and just a few clicks job to create an account with shape
-          </p>
-        </div>
-      </div>
-
-      
-      <div class="flex items-start gap-3 p-1 md:items-center">
-        <img
-          class="w-10 md:w-[70px]"
-          src="https://prium.github.io/Shape/assets/img/icons/icon.png"
-          alt="download"
-        />
-        <div class="flex-1">
-          <p class="text-xl font-semibold text-gray-700 md:text-2xl">
-            Start building beautiful Apps With shape
-          </p>
-          <p class="mt-2 text-sm text-gray-500 md:text-base">
-            with our design system, you will find it no brainers job to build your application
-          </p>
-        </div>
-      </div>
-
-    
-      <div class="flex items-start gap-3 p-1 md:items-center">
-        <img
-          class="w-10 md:w-[70px]"
-          src="https://prium.github.io/Shape/assets/img/icons/icon-3.png"
-          alt="download"
-        />
-        <div class="flex-1">
-          <p class="text-xl font-semibold text-gray-700 md:text-2xl">
-            Deploy your site and make money
-          </p>
-          <p class="mt-2 text-sm text-gray-500 md:text-base">
-            make it, bake it, and next thing you know your cake is ready. enjoy it!
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-</template>
-
 <script setup lang="ts">
 import { ref, computed, onUnmounted, onMounted } from 'vue'
+import { GetPageContentApi } from '@/services/home';
+
+type TpageContent = {
+  heading: string;
+  description: string;
+}
+
+const pageContent = ref<TpageContent[]>([]);
+
+async function GetPageContent() {
+  try {
+    const response = await GetPageContentApi();
+    if (response.status === 200) {
+      console.log(response.data);
+      pageContent.value = response.data;
+    }
+  }
+  catch (error) {
+    console.log(error);
+  }
+}
+
+GetPageContent();
 
 const video = ref<HTMLVideoElement | null>(null)
 const progressBar = ref<HTMLDivElement | null>(null)
@@ -270,7 +121,7 @@ const handleVideoEnd = () => {
 // Handle click outside for settings menu
 const handleClickOutside = (event: MouseEvent) => {
   if (
-    settingsMenu.value && 
+    settingsMenu.value &&
     !settingsMenu.value.contains(event.target as Node) &&
     !(event.target as HTMLElement).closest('.settings-button')
   ) {
@@ -287,9 +138,9 @@ onUnmounted(() => {
 })
 
 onMounted(() => {
-    const animatedSections = document.querySelectorAll(".anim-slide-up");
+  const animatedSections = document.querySelectorAll(".anim-slide-up");
 
-    const observer = new IntersectionObserver(
+  const observer = new IntersectionObserver(
     (entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -305,6 +156,147 @@ onMounted(() => {
 });
 </script>
 
+<template>
+  <section class="relative bg-white">
+    <div class="px-4 py-8 md:py-20 md:px-20">
+      <!-- Header Text -->
+      <div class="flex flex-col py-2 mx-2 my-3 text-center items-center md:mx-5 md:my-5">
+        <h3 class="text-2xl font-bold text-gray-900 md:text-4xl anim-slide-up">
+
+          <span v-if="pageContent.length > 0"> {{ pageContent[2]?.heading.substring(0, 30) }}</span>
+          <span v-else class="block w-[750px] h-14 bg-gray-300 rounded animate-pulse"></span>
+          <br class="hidden md:block" v-if="pageContent.length > 0" />
+
+          <span v-if="pageContent.length > 0">{{ pageContent[2]?.heading.substring(30, 53) }}</span>
+          <span v-else class="block w-[750px] h-14 bg-gray-300 rounded animate-pulse mt-1"></span>
+        </h3>
+        <p class="mt-4 text-sm text-gray-500 md:mt-7 md:text-xl anim-slide-up">
+          <span v-if="pageContent.length > 0">{{ pageContent[2]?.description.substring(0, 77) }}</span>
+          <span v-else class="block w-96 h-10 bg-gray-300 rounded animate-pulse"></span>
+
+          <br class="hidden md:block" v-if="pageContent.length > 0" />
+          <span v-if="pageContent.length > 0">{{ pageContent[2]?.description.substring(77, 154) }}</span>
+          <span v-else class="block w-96 h-10 bg-gray-300 rounded animate-pulse mt-1"></span>
+
+        </p>
+      </div>
+
+      <!-- Video Section -->
+      <div class="relative flex justify-center py-5 mx-2 my-5 md:py-10 md:mx-10 md:my-10">
+        <!-- Decorative Images - Hidden on mobile -->
+        <img class="absolute hidden md:block"
+          src="https://prium.github.io/Shape/assets/img/illustrations/home/home-vector-1.png" alt=""
+          style="left:10%; width:16%; top:1%;">
+        <img class="absolute hidden md:block"
+          src="https://prium.github.io/Shape/assets/img/illustrations/home/jhiri-1.png" alt=""
+          style="left:10%; width:11%; top:-5%;">
+        <img class="absolute hidden md:block"
+          src="https://prium.github.io/Shape/assets/img/illustrations/home/home-vector-2.png" alt=""
+          style="right: 10%; width:20%; top:1%;">
+
+        <div class="video-wrapper anim-slide-up">
+          <img src="https://prium.github.io/Shape/assets/img/bg-img/home-video-bg.png" alt="Video thumbnail"
+            class="video-cover w-[1200px]" :class="{ hide: isPlaying }" ref="videoCover" />
+          <video class="w-[1200px]" ref="video" src="https://prium.github.io/Shape/assets/video/beach.mp4"
+            preload="metadata" @click="togglePlay" @timeupdate="updateProgress" @ended="handleVideoEnd">
+          </video>
+
+          <button class="center-play-button" :class="{ hide: isPlaying }" @click="startPlay">
+            <svg viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </button>
+
+          <div class="controls-wrapper">
+            <button class="play-button" @click="togglePlay">
+              {{ isPlaying ? '⏸' : '▶' }}
+            </button>
+
+            <div class="progress-bar" ref="progressBar" @click="seek">
+              <div class="progress" :style="{ width: `${progress}%` }" />
+            </div>
+
+            <span class="time">{{ formattedTime }}</span>
+
+            <button class="settings-button" @click.stop="toggleSettings">
+              ⚙️
+            </button>
+
+            <button class="fullscreen-button" @click="toggleFullscreen">
+              ⛶
+            </button>
+
+            <div v-show="showSettings" class="settings-menu" ref="settingsMenu">
+              <button @click="changePlaybackSpeed">
+                Speed: {{ currentSpeed }}x
+              </button>
+              <button @click="toggleCaptions">
+                Captions: {{ captionsEnabled ? 'On' : 'Off' }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="flex flex-col justify-around gap-6 px-2 pt-5 mx-10 md:flex-row md:px-2">
+
+        <div class="flex items-start gap-3 p-1 md:items-center">
+          <img class="w-10 md:w-[70px]" src="https://prium.github.io/Shape/assets/img/icons/icon-1.png"
+            alt="download " />
+          <div class="flex-1">
+            <p class="text-xl font-semibold text-gray-700 md:text-2xl">
+
+              <span v-if="pageContent.length > 0">{{ pageContent[3]?.heading }}</span>
+              <span v-else class="block w-80 h-10 bg-gray-300 rounded animate-pulse"></span>
+            </p>
+            <p class="mt-2 text-xl text-gray-500 md:text-xl">
+
+              <span v-if="pageContent.length > 0">{{ pageContent[3]?.description }}</span>
+              <span v-else class="block w-80 h-20 bg-gray-300 rounded animate-pulse"></span>
+            </p>
+          </div>
+        </div>
+
+
+        <div class="flex items-start gap-3 p-1 md:items-center">
+          <img class="w-10 md:w-[70px]" src="https://prium.github.io/Shape/assets/img/icons/icon.png" alt="download" />
+          <div class="flex-1">
+            <p class="text-xl font-semibold text-gray-700 md:text-2xl">
+              <span v-if="pageContent.length > 0">{{ pageContent[4]?.heading }}</span>
+              <span v-else class="block w-80 h-10 bg-gray-300 rounded animate-pulse"></span>
+
+            </p>
+            <p class="mt-2 text-xl text-gray-500 md:text-xl">
+              <span v-if="pageContent.length > 0">{{ pageContent[4]?.description }}</span>
+              <span v-else class="block w-80 h-20 bg-gray-300 rounded animate-pulse"></span>
+
+            </p>
+          </div>
+        </div>
+
+
+        <div class="flex items-start gap-3 p-1 md:items-center">
+          <img class="w-10 md:w-[70px]" src="https://prium.github.io/Shape/assets/img/icons/icon-3.png"
+            alt="download" />
+          <div class="flex-1">
+            <p class="text-xl font-semibold text-gray-700 md:text-2xl">
+
+              <span v-if="pageContent.length > 0">{{ pageContent[5]?.heading }}</span>
+              <span v-else class="block w-80 h-10 bg-gray-300 rounded animate-pulse"></span>
+            </p>
+            <p class="mt-2 text-l text-gray-500 md:text-xl">
+
+              <span v-if="pageContent.length > 0">{{ pageContent[5]?.description }}</span>
+              <span v-else class="block w-80 h-20 bg-gray-300 rounded animate-pulse"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
 
 <style scoped>
 .anim-slide-up {
@@ -313,8 +305,8 @@ onMounted(() => {
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.anim-slide-up.animate{
-opacity: 1;
-transform: translateY(0);
+.anim-slide-up.animate {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>

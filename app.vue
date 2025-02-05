@@ -2,4 +2,5 @@
   <div>
     <NuxtPage />
   </div>
+  
 </template>

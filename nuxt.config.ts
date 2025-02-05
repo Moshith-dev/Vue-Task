@@ -5,9 +5,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   css: ['~/assets/main.css'],
-  modules: [
-    '@vueuse/nuxt',
-  ],
+  
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -23,8 +21,18 @@ export default defineNuxtConfig({
         { hid: 'description', name: 'description', content: 'My default description' }
       ],
       link: [
-        { rel: 'icon', type: 'image/ico', href: 'shape-icon.ico' } // Path to your favicon
+        { rel: 'icon', type: 'image/ico', href: 'shape-icon.ico' } ,// Path to your favicon
+        { 
+          rel: 'stylesheet', 
+          href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap' 
+        },
       ]
     }
-  }
+  },
+  
+  runtimeConfig: {
+    public: { 
+      mode: process.env.MODE,
+      apiBaseURL: process.env.API_BASE_URL,
+  }},
 })
