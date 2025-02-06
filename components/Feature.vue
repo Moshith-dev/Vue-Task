@@ -1,28 +1,14 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { GetPageContentApi } from '@/services/home';
 
 type TpageContent = {
   heading: string;
   description: string;
-}
+};
 
-const pageContent = ref<TpageContent[]>([]);
-
-async function GetPageContent() {
-  try {
-    const response = await GetPageContentApi();
-    if (response.status === 200) {
-      console.log(response.data);
-      pageContent.value = response.data;
-    }
-  }
-  catch (error) {
-    console.log(error);
-  }
-}
-
-GetPageContent();
+defineProps<{
+  pageContent: TpageContent[];
+}>();
 
 onMounted(() => {
   const animatedSections = document.querySelectorAll(".anim-slide-left");

@@ -1,37 +1,82 @@
-<script setup>
+<script setup lang="ts">
+import { ref, onMounted, computed } from 'vue';
+import { GetPageContentApi, GetMenuApi } from '@/services/home';
+
+type TpageContent = {
+  heading: string;
+  description: string;
+};
+const pageContent = ref<TpageContent[]>([]);
+
+async function getPageContent() {
+  try {
+    const response = await GetPageContentApi();
+    if (response.status === 200) {
+      pageContent.value = response.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+type Tmenu = {
+  menu: string;
+  items: string[];
+  parentId: number;
+};
+
+const MenuItem = ref<Tmenu[]>([]);
+async function GetMenu() {
+  try {
+    const response = await GetMenuApi();
+    if (response.status === 200) {
+      console.log(response.data);
+      MenuItem.value = response.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
+
+onMounted(() => {
+  getPageContent();
+  GetMenu();
+});
 
 </script>
 <template>
   <main id="top" class="bg-white">
-    <Navbar/>
+    <Navbar :MenuItem="MenuItem"/>
     <!--first section-->
-    <Home />
+    <Home :pageContent="pageContent"/>
 
     <!--Video-->
 
-    <Intro/>
+    <Intro :pageContent="pageContent"/>
 
     <!--Style-->
-    <Feature/>
+    <Feature :pageContent="pageContent"/>
 
     <!--workflow-->
-    <Workflow/>
+    <Workflow :pageContent="pageContent"/>
 
     <!-- resume -->
 
-    <Hiring/>
+    <Hiring :pageContent="pageContent"/>
 
     <!-- access -->
-    <Access/>
+    <Access :pageContent="pageContent"/>
 
     <!-- Downloads Section -->
-    <Download/>
+    <Download :pageContent="pageContent"/>
 
     <!-- Purchase Section -->
-    <Purchase/>
+    <Purchase :pageContent="pageContent"/>
 
     <!-- Footer -->
-    <Footer />
+    <Footer :pageContent="pageContent" :MenuItem="MenuItem"/>
     
   </main> 
 </template>

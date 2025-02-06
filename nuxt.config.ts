@@ -4,12 +4,18 @@ import { defineNuxtConfig } from "nuxt/config";
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  css: ['~/assets/main.css'],
-  
+  css: ['~/assets/main.css',
+    '/node_modules/slick-carousel/slick/slick.css',
+    '/node_modules/slick-carousel/slick/slick-theme.css'
+  ],
+  modules: [
+    'vue3-carousel-nuxt'
+  ],
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
+      
     },
   },
   app: {

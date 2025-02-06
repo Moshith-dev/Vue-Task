@@ -1,7 +1,28 @@
+
 <script setup lang="ts">
 import { GetFooterApi, GetIconsListApi, GetPageContentApi, GetMenuApi } from '@/services/home';
 import { onMounted, ref, computed } from 'vue';
 
+import Button from './Button.vue';
+
+const custombutton = ref({
+  text: 'Subscribe',
+  buttonStyle : 'w-full px-6 py-4 text-white transition-colors bg-indigo-600 rounded-lg hover:bg-indigo-700'
+});
+
+const HandleClick = () => {
+  console.log('Button clicked');
+};
+
+type TpageContent = {
+  heading: string;
+  description: string;
+};
+
+const props = defineProps<{
+  pageContent: TpageContent[];
+  MenuItem: Tmenu[];
+}>();
 
 type Tfooter = {
   title: string;
@@ -42,48 +63,21 @@ async function getIcons() {
 }
 
 
-type TpageContent = {
-  heading: string;
-  description: string;
-}
-const pageContent = ref<TpageContent[]>([]);
-
-async function GetPageContent() {
-  try {
-    const response = await GetPageContentApi();
-    if (response.status === 200) {
-      console.log(response.data);
-      pageContent.value = response.data;
-    }
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 type Tmenu = {
   menu: string;
-}
-const MenuItem = ref<Tmenu[]>([]);
+  items: string[];
+  parentId: number;
+};
+// Removed as it is now combined with the previous defineProps
 
-async function GetMenu() {
-  try {
-    const response = await GetMenuApi();
-    if (response.status === 200) {
-      console.log(response.data);
-      MenuItem.value = response.data;
-    }
-  } catch (error) {
-    console.log(error);
-  }
-}
+
 
 // OnMounted lifecycle hook to fetch data
 onMounted(() => {
   getIcons();
 
   getFooter();
-  GetPageContent();
-  GetMenu();
+
 
   const animatedSections = document.querySelectorAll(".anim-slide-left");
 
@@ -104,7 +98,7 @@ onMounted(() => {
 
 // Computed property for sliced menu items
 const slicedMenuItems = computed(() => {
-  return MenuItem.value.slice(65, 80); // Slice from index 65 to 79 (80 is exclusive)
+  return props.MenuItem.slice(65, 80); // Slice from index 65 to 79 (80 is exclusive)
 });
 
 </script>
@@ -187,9 +181,8 @@ const slicedMenuItems = computed(() => {
           <div class="max-w-md mx-auto text-xl space-y-3 md:space-y-4 md:mx-0">
             <input type="email" placeholder="Your Email"
               class="w-full px-6 py-4 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 " />
-            <button class="w-full px-6 py-4 text-white transition-colors bg-indigo-600 rounded-lg hover:bg-indigo-700 ">
-              Subscribe
-            </button>
+           
+            <Button v-bind="custombutton" :action="HandleClick"/>
             <p class="text-xs p md:text-[16px]">
               <span v-if="pageContent.length > 0">
                 {{ pageContent[16]?.description }}

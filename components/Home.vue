@@ -1,154 +1,131 @@
-<script lang="ts">
-import { defineComponent, ref, computed, onMounted, onBeforeUnmount } from 'vue'
-import { GetPageContentApi } from '@/services/home';
+<script setup lang="ts">
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import Button from './Button.vue';
 
-// Type for page content
+const custombutton = ref({
+  text:'Get Access',
+  buttonStyle : 'w-full px-4 py-3 text-base font-bold text-white bg-indigo-600 rounded md:w-auto md:px-10 md:py-6 md:ml-10 lg:text-[22px]  hover:bg-indigo-500'
+})
+
+const HandleClick = () => {
+  console.log('Button clicked');
+};
+
 type TpageContent = {
   heading: string;
-  description: string | null;
-}
+  description: string;
+};
 
-const pageContent = ref<TpageContent[]>([]);
-
-// Fetch page content from the API
-async function GetPageContent() {
-  try {
-    const response = await GetPageContentApi();
-    if (response.status === 200) {
-      console.log(response.data);
-      pageContent.value = response.data;
-    }
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-GetPageContent(); // Call the function to fetch data initially
+defineProps<{
+  pageContent: TpageContent[];
+}>();
 
 interface Logo {
   name: string;
   src: string;
 }
 
-export default defineComponent({
-  name: 'LogoCarousel',
-  setup() {
-    // Fetch the page content when the component mounts
-    onMounted(() => {
-      GetPageContent(); // Call the page content fetching function
-      const animatedSections = document.querySelectorAll(".anim-slide-up");
+// Fetch the page content when the component mounts
+onMounted(() => {
+  // Call the page content fetching function
+  const animatedSections = document.querySelectorAll(".anim-slide-up");
 
-      const observer = new IntersectionObserver(
-        (entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("animate");
-              observer.unobserve(entry.target); // Unobserve to trigger the animation only once
-            }
-          });
-        },
-        { threshold: 0.5 } // Trigger when 50% of the element is visible
-      );
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate");
+          observer.unobserve(entry.target); // Unobserve to trigger the animation only once
+        }
+      });
+    },
+    { threshold: 0.5 } // Trigger when 50% of the element is visible
+  );
 
-      animatedSections.forEach((section) => observer.observe(section));
-    });
+  animatedSections.forEach((section) => observer.observe(section));
+});
 
-    const logos: Logo[] = [
-      { name: 'Microsoft', src: 'https://prium.github.io/Shape/assets/img/logos/airbnb-logo.png' },
-      { name: 'Airbnb', src: 'https://prium.github.io/Shape/assets/img/logos/google-logo.png' },
-      { name: 'Google', src: 'https://prium.github.io/Shape/assets/img/logos/Spotify_Logo.png' },
-      { name: 'Spotify', src: 'https://prium.github.io/Shape/assets/img/logos/Paypal-logo.png' },
-      { name: 'PayPal', src: 'https://prium.github.io/Shape/assets/img/logos/microsoft-logo.png' }
-    ];
+const logos: Logo[] = [
+  { name: 'Microsoft', src: 'https://prium.github.io/Shape/assets/img/logos/airbnb-logo.png' },
+  { name: 'Airbnb', src: 'https://prium.github.io/Shape/assets/img/logos/google-logo.png' },
+  { name: 'Google', src: 'https://prium.github.io/Shape/assets/img/logos/Spotify_Logo.png' },
+  { name: 'Spotify', src: 'https://prium.github.io/Shape/assets/img/logos/Paypal-logo.png' },
+  { name: 'PayPal', src: 'https://prium.github.io/Shape/assets/img/logos/microsoft-logo.png' }
+];
 
-    const currentSlide = ref(0);
-    const itemsPerView = ref(5);
-    const autoplayInterval = ref<number | null>(null);
-    const carouselContainer = ref<HTMLElement | null>(null);
+const currentSlide = ref(0);
+const itemsPerView = ref(5);
+const autoplayInterval = ref<number | null>(null);
+const carouselContainer = ref<HTMLElement | null>(null);
 
-    // Double the logos array for infinite scroll effect
-    const allLogos = computed(() => [...logos, ...logos]);
+// Double the logos array for infinite scroll effect
+const allLogos = computed(() => [...logos, ...logos]);
 
-    const carouselStyle = computed(() => ({
-      transform: `translateX(-${currentSlide.value * (100 / itemsPerView.value)}%)`
-    }));
+const carouselStyle = computed(() => ({
+  transform: `translateX(-${currentSlide.value * (100 / itemsPerView.value)}%)`
+}));
 
-    const updateItemsPerView = () => {
-      if (window.innerWidth < 640) {
-        itemsPerView.value = 3;
-      } else if (window.innerWidth < 1024) {
-        itemsPerView.value = 4;
-      } else {
-        itemsPerView.value = 5;
-      }
-    };
+const updateItemsPerView = () => {
+  if (window.innerWidth < 640) {
+    itemsPerView.value = 3;
+  } else if (window.innerWidth < 1024) {
+    itemsPerView.value = 4;
+  } else {
+    itemsPerView.value = 5;
+  }
+};
 
-    const nextSlide = () => {
-      if (currentSlide.value >= logos.length - 1) {
-        currentSlide.value = 0;
-      } else {
-        currentSlide.value++;
-      }
-    };
+const nextSlide = () => {
+  if (currentSlide.value >= logos.length - 1) {
+    currentSlide.value = 0;
+  } else {
+    currentSlide.value++;
+  }
+};
 
-    const prevSlide = () => {
-      if (currentSlide.value <= 0) {
-        currentSlide.value = logos.length - 1;
-      } else {
-        currentSlide.value--;
-      }
-    };
+const prevSlide = () => {
+  if (currentSlide.value <= 0) {
+    currentSlide.value = logos.length - 1;
+  } else {
+    currentSlide.value--;
+  }
+};
 
-    const goToSlide = (index: number) => {
-      currentSlide.value = index;
-    };
+const goToSlide = (index: number) => {
+  currentSlide.value = index;
+};
 
-    const startAutoplay = () => {
-      autoplayInterval.value = window.setInterval(() => {
-        nextSlide();
-      }, 3000);
-    };
+const startAutoplay = () => {
+  autoplayInterval.value = window.setInterval(() => {
+    nextSlide();
+  }, 3000);
+};
 
-    const stopAutoplay = () => {
-      if (autoplayInterval.value) {
-        clearInterval(autoplayInterval.value);
-        autoplayInterval.value = null;
-      }
-    };
+const stopAutoplay = () => {
+  if (autoplayInterval.value) {
+    clearInterval(autoplayInterval.value);
+    autoplayInterval.value = null;
+  }
+};
 
-    onMounted(() => {
-      updateItemsPerView();
-      window.addEventListener('resize', updateItemsPerView);
-      startAutoplay();
+onMounted(() => {
+  updateItemsPerView();
+  window.addEventListener('resize', updateItemsPerView);
+  startAutoplay();
 
-      if (carouselContainer.value) {
-        carouselContainer.value.addEventListener('mouseenter', stopAutoplay);
-        carouselContainer.value.addEventListener('mouseleave', startAutoplay);
-      }
-    });
+  if (carouselContainer.value) {
+    carouselContainer.value.addEventListener('mouseenter', stopAutoplay);
+    carouselContainer.value.addEventListener('mouseleave', startAutoplay);
+  }
+});
 
-    onBeforeUnmount(() => {
-      window.removeEventListener('resize', updateItemsPerView);
-      stopAutoplay();
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', updateItemsPerView);
+  stopAutoplay();
 
-      if (carouselContainer.value) {
-        carouselContainer.value.removeEventListener('mouseenter', stopAutoplay);
-        carouselContainer.value.removeEventListener('mouseleave', startAutoplay);
-      }
-    });
-
-    return {
-      logos,
-      allLogos,
-      currentSlide,
-      itemsPerView,
-      carouselStyle,
-      carouselContainer,
-      nextSlide,
-      prevSlide,
-      goToSlide,
-      pageContent
-    };
+  if (carouselContainer.value) {
+    carouselContainer.value.removeEventListener('mouseenter', stopAutoplay);
+    carouselContainer.value.removeEventListener('mouseleave', startAutoplay);
   }
 });
 </script>
@@ -191,11 +168,9 @@ export default defineComponent({
           <div class="relative flex flex-col justify-center gap-4 pb-10 md:flex-row md:gap-0 md:pb-20 anim-slide-up">
             <input type="email" placeholder="Your Email"
               class="w-full px-4 py-3 text-base font-bold bg-[#2f314b] rounded md:w-auto md:px-12 md:py-6 lg:text-[22px] focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-            <button
-              class="w-full px-4 py-3 text-base font-bold text-white bg-indigo-600 rounded md:w-auto md:px-10 md:py-6 md:ml-10 lg:text-[22px]  hover:bg-indigo-500">
-              Get Access
-            </button>
+              <Button v-bind="custombutton" :action="HandleClick"/>
           </div>
+          
 
           <div class="-z-10 px-10">
             <div class="flex flex-col items-center justify-center">
@@ -218,7 +193,7 @@ export default defineComponent({
                 <h6 class="mb-8 text-gray-200 font-bold text-sm md:text-base uppercase tracking-wider relative z-10">
 
                   <span v-if="pageContent.length > 0">{{ pageContent[1]?.heading }}</span>
-                  <span v-else class="block w-96 h-10 bg-gray-300 rounded animate-pulse "></span>
+                  <span v-else class="absolute block w-96 h-10 bg-gray-300 rounded animate-pulse left-[450px] bottom-[90px]"></span>
                 </h6>
 
                 <div class="relative logo-carousel" ref="carouselContainer">

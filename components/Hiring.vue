@@ -1,24 +1,26 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
 import { GetPageContentApi, GetEmployeeApi } from '@/services/home';
+import Button from './Button.vue';
+
+const custombutton = ref({
+  text: ['Drop Your CV',' Learn More'],
+  buttonStyle : ['px-5 py-2 text-white transition-colors bg-indigo-700 rounded-lg hover:bg-indigo-600 button','px-5 py-2 text-indigo-900 transition-colors bg-gray-300 rounded-lg hover:bg-gray-200 button']
+});
+
+const HandleClick = () => {
+  console.log('Button clicked');
+};
 
 type TpageContent = {
   heading: string;
   description: string;
-}
+};
 
-const pageContent = ref<TpageContent[]>([]);
+defineProps<{
+  pageContent: TpageContent[];
+}>();
 
-async function getPageContent() {
-  try {
-    const response = await GetPageContentApi();
-    if (response.status === 200) {
-      pageContent.value = response.data;
-    }
-  } catch (error) {
-    console.log(error);
-  }
-}
 
 
 type TeamMembers = {
@@ -42,7 +44,7 @@ async function getEmployees() {
 
 onMounted(() => {
   getEmployees();
-  getPageContent();
+  
 })
 
 const teamMembers = computed(() => {
@@ -193,12 +195,8 @@ onMounted(() => {
           </h3>
 
           <div class="flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
-            <button class="px-5 py-2 text-white transition-colors bg-indigo-700 rounded-lg hover:bg-indigo-600 button">
-              Drop Your CV
-            </button>
-            <button class="px-5 py-2 text-indigo-900 transition-colors bg-gray-300 rounded-lg hover:bg-gray-200 button">
-              Learn More
-            </button>
+            <Button :buttonStyle="custombutton.buttonStyle[0]" :text="custombutton.text[0]" :action="HandleClick"/>
+            <Button :buttonStyle="custombutton.buttonStyle[1]" :text="custombutton.text[1]" :action="HandleClick" />
           </div>
 
           <p class="py-3 text-sm text-gray-500 md:py-5 md:text-base">

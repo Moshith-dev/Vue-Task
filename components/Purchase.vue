@@ -1,26 +1,27 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { GetPageContentApi } from '@/services/home';
+
+import Button from './Button.vue';
+
+const custombutton = ref({
+  text: 'Purchase',
+  buttonStyle : 'inline-block px-6 py-2 text-base font-medium text-gray-500 transition-all duration-300 ease-in-out bg-white rounded-lg shadow-sm md:px-8 md:py-3 md:text-lg hover:bg-gray-300'
+});
+
+const HandleClick = () => {
+  console.log('Button clicked');
+};
 
 type TpageContent = {
   heading: string;
-}
+  description: string;
+};
 
-const pageContent = ref<TpageContent[]>([]);
 
-async function GetPageContent() {
-  try {
-    const response = await GetPageContentApi();
-    if (response.status === 200) {
-      console.log(response.data);
-      pageContent.value = response.data;
-    }
-  }
-  catch (error) {
-    console.log(error);
-  }
-}
-GetPageContent();
+defineProps<{
+  pageContent: TpageContent[];
+}>();
+
 onMounted(() => {
   const animatedSections = document.querySelectorAll(".anim-slide-up");
 
@@ -64,10 +65,7 @@ onMounted(() => {
 
 
         <div class="flex justify-center mt-4 md:mt-6 anim-slide-up">
-          <a href="#!"
-            class="inline-block px-6 py-2 text-base font-medium text-gray-500 transition-all duration-300 ease-in-out bg-white rounded-lg shadow-sm md:px-8 md:py-3 md:text-lg hover:bg-gray-300 ">
-            Purchase
-          </a>
+          <Button :buttonStyle="custombutton.buttonStyle" :text="custombutton.text" :action="HandleClick"/>
         </div>
       </div>
     </div>

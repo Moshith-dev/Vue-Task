@@ -1,28 +1,26 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { GetPageContentApi } from '@/services/home';
+import Button from './Button.vue';
+
+const custombutton = ref({
+  text: ['Apple Store', 'Google Play'],
+  buttonStyle : 'text-white hover:text-gray-300 md:text-xl'
+});
+
+const HandleClick = () => {
+  console.log('Button clicked');
+};
+
 
 type TpageContent = {
   heading: string;
   description: string;
-}
+};
 
-const pageContent = ref<TpageContent[]>([]);
+defineProps<{
+  pageContent: TpageContent[];
+}>();
 
-async function GetPageContent() {
-  try {
-    const response = await GetPageContentApi();
-    if (response.status === 200) {
-      console.log(response.data);
-      pageContent.value = response.data;
-    }
-  }
-  catch (error) {
-    console.log(error);
-  }
-}
-
-GetPageContent();
 onMounted(() => {
   const animatedSections = document.querySelectorAll(".anim-slide-left");
   const animsection2 = document.querySelectorAll(".anim-slide-right");
@@ -75,23 +73,23 @@ onMounted(() => {
           <div class="flex flex-col items-center gap-4 sm:flex-row">
 
             <div
-              class="flex items-center justify-center w-full  transition-colors bg-indigo-600 rounded sm:w-auto hover:bg-indigo-700 button">
+              class="flex items-center justify-center w-full  transition-colors bg-indigo-600 rounded sm:w-auto hover:bg-indigo-700 py-2 px-2">
               <img class="w-8 h-8 mr-2 md:w-10 md:h-10" src="assets/google-play-svgrepo-com.svg" alt="app store"
                 style="filter: invert();">
-              <div class="flex-col font-bold">
+              <div class="flex-col font-bold md:pr-5 md:py-2 md:px-2">
                 <p class=" text-sm text-white md:text-l">Download On The</p>
-                <a class="text-white hover:text-gray-300" href="#!">Apple Store</a>
+                <Button :buttonStyle="custombutton.buttonStyle" :text="custombutton.text[0]" :action="HandleClick"/>
               </div>
             </div>
 
 
             <div
-              class="flex items-center justify-center w-full  transition-colors bg-indigo-600 rounded sm:w-auto hover:bg-indigo-700 button">
+              class="flex items-center justify-center w-full  transition-colors bg-indigo-600 rounded sm:w-auto hover:bg-indigo-700 px-2 py-2 ">
               <img class="w-10 h-8 mr-2 md:w-10 md:h-10 " src="/assets/apple-logo-svgrepo-com.svg" alt="google play"
                 style="filter: invert();">
-              <div class="flex-col font-bold">
+              <div class="flex-col font-bold md:pr-5 md:py-2 md:px-2">
                 <p class="text-sm text-white md:text-l">Download On The</p>
-                <a class="text-white hover:text-gray-300" href="#!">Google Play</a>
+                <Button :buttonStyle="custombutton.buttonStyle" :text="custombutton.text[1]" :action="HandleClick"/>
               </div>
             </div>
           </div>

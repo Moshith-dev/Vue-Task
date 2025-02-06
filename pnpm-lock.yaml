@@ -11,6 +11,9 @@ importers:
       '@types/jquery':
         specifier: ^3.5.32
         version: 3.5.32
+      '@types/slick-carousel':
+        specifier: ^1.6.40
+        version: 1.6.40
       '@vueuse/nuxt':
         specifier: ^12.3.0
         version: 12.3.0(magicast@0.3.5)(nuxt@3.15.0(@parcel/watcher@2.5.0)(@types/node@22.10.4)(db0@0.2.1)(ioredis@5.4.2)(magicast@0.3.5)(rollup@4.29.1)(terser@5.37.0)(typescript@5.7.2)(vite@6.0.7(@types/node@22.10.4)(jiti@2.4.2)(terser@5.37.0)(yaml@2.6.1))(yaml@2.6.1))(rollup@4.29.1)(typescript@5.7.2)
@@ -32,6 +35,9 @@ importers:
       pinia:
         specifier: ^2.3.1
         version: 2.3.1(typescript@5.7.2)(vue@3.5.13(typescript@5.7.2))
+      slick-carousel:
+        specifier: ^1.8.1
+        version: 1.8.1(jquery@3.7.1)
       vue:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.7.2)
@@ -41,6 +47,12 @@ importers:
       vue-router:
         specifier: latest
         version: 4.5.0(vue@3.5.13(typescript@5.7.2))
+      vue-slick-carousel:
+        specifier: ^1.0.6
+        version: 1.0.6
+      vue3-carousel-nuxt:
+        specifier: ^1.1.5
+        version: 1.1.5(magicast@0.3.5)(rollup@4.29.1)(vue@3.5.13(typescript@5.7.2))
     devDependencies:
       '@types/node':
         specifier: ^22.10.4
@@ -923,6 +935,9 @@ packages:
   '@types/sizzle@2.3.9':
     resolution: {integrity: sha512-xzLEyKB50yqCUPUJkIsrVvoWNfFUbIZI+RspLWt8u+tIW/BetMBZtgV2LY/2o+tYH8dRvQ+eoPf3NdhQCcLE2w==}
 
+  '@types/slick-carousel@1.6.40':
+    resolution: {integrity: sha512-r56PBGVLYHmZvFSV+UC4dYbnpEu3LGzgJiSSixBx5ME+IUhsyho1XP7gKSG0R9tiYSx54ftq/g+miLQTbA10Dw==}
+
   '@types/web-bluetooth@0.0.20':
     resolution: {integrity: sha512-g9gZnnXVq7gM7v3tJCWV/qw7w+KeOlSHAhgF9RytFyifW6AF61hdT2ucrYhPq9hLs5JIryeupHV3qGk95dH9ow==}
 
@@ -998,6 +1013,9 @@ packages:
 
   '@vue/compiler-dom@3.5.13':
     resolution: {integrity: sha512-ZOJ46sMOKUjO3e94wPdCzQ6P1Lx/vhp2RSvfaab88Ajexs0AHeV0uasYhi99WPaogmBlRHNRuly8xV75cNTMDA==}
+
+  '@vue/compiler-sfc@2.7.16':
+    resolution: {integrity: sha512-KWhJ9k5nXuNtygPU7+t1rX6baZeqOYLEforUPjgNDBnLicfHCoi48H87Q8XyLZOrNNsmhuwKqtpDQWjEFe6Ekg==}
 
   '@vue/compiler-sfc@3.5.13':
     resolution: {integrity: sha512-6VdaljMpD82w6c2749Zhf5T9u5uLBWKnVue6XWxprDobftnletJ8+oel7sexFfM3qIxNmVE7LSFGTpv6obNyaQ==}
@@ -1571,6 +1589,9 @@ packages:
     resolution: {integrity: sha512-0/r0MySGYG8YqlayBZ6MuCfECmHFdJ5qyPh8s8wa5Hnm6SaFLSK1VYCbj+NKp090Nm1caZhD+QTnmxO7esYGyQ==}
     engines: {node: '>=10.13.0'}
 
+  enquire.js@2.1.6:
+    resolution: {integrity: sha512-/KujNpO+PT63F7Hlpu4h3pE3TokKRHN26JYmQpPyjkRD/N57R7bPDNojMXdi7uveAKjYB7yQnartCxZnFWr0Xw==}
+
   entities@4.5.0:
     resolution: {integrity: sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==}
     engines: {node: '>=0.12'}
@@ -1997,6 +2018,9 @@ packages:
   json-schema-traverse@1.0.0:
     resolution: {integrity: sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==}
 
+  json2mq@0.2.0:
+    resolution: {integrity: sha512-SzoRg7ux5DWTII9J2qkrZrqV1gt+rTaoufMxEzXbS26Uid0NwaJd123HcoB80TgubEppxxIGdNxCx50fEoEWQA==}
+
   json5@2.2.3:
     resolution: {integrity: sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==}
     engines: {node: '>=6'}
@@ -2041,14 +2065,28 @@ packages:
     resolution: {integrity: sha512-9rrA30MRRP3gBD3HTGnC6cDFpaE1kVDWxWgqWJUN0RvDNAo+Nz/9GxB+nHOH0ifbVFy0hSA1V6vFDvnx54lTEQ==}
     engines: {node: '>=14'}
 
+  lodash.assign@4.2.0:
+    resolution: {integrity: sha512-hFuH8TY+Yji7Eja3mGiuAxBqLagejScbG8GbG0j6o9vzn0YL14My+ktnqtZgFTosKymC9/44wP6s7xyuLfnClw==}
+
+  lodash.debounce@4.0.8:
+    resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
+
   lodash.defaults@4.2.0:
     resolution: {integrity: sha512-qjxPLHd3r5DnsdGacqOMU6pb/avJzdh9tFX2ymgoZE27BmjXrNy/y4LoaiTeAb+O3gL8AfpJGtqfX/ae2leYYQ==}
+
+  lodash.get@4.4.2:
+    resolution: {integrity: sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==}
+    deprecated: This package is deprecated. Use the optional chaining (?.) operator instead.
 
   lodash.isarguments@3.1.0:
     resolution: {integrity: sha512-chi4NHZlZqZD18a0imDHnZPrDeBbTtVN7GXMwuGdRH9qotxAjYs3aVLKc7zNOG9eddR5Ksd8rvFEBc9SsggPpg==}
 
   lodash.memoize@4.1.2:
     resolution: {integrity: sha512-t7j+NzmgnQzTAYXcsHYLgimltOV1MXHtlOWf6GjL9Kj8GK5FInw5JotxvbOs+IvV1/Dzo04/fCGfLVs7aXb4Ag==}
+
+  lodash.pick@4.4.0:
+    resolution: {integrity: sha512-hXt6Ul/5yWjfklSGvLQl8vM//l3FtyHZeuelpzK6mm99pNvN9yTDruNZPEJZD1oWrqo+izBmB7oUfWgcCX7s4Q==}
+    deprecated: This package is deprecated. Use destructuring assignment syntax instead.
 
   lodash.uniq@4.5.0:
     resolution: {integrity: sha512-xfBaXQd9ryd9dlSDvnvI0lvxfLJlYAZzXomUYzLKtUeOQvOP5piqAWuGtrhWeqaXK9hhoM/iyJc5AV+XfsX3HQ==}
@@ -2621,6 +2659,11 @@ packages:
     resolution: {integrity: sha512-OCVPnIObs4N29kxTjzLfUryOkvZEq+pf8jTF0lg8E7uETuWHA+v7j3c/xJmiqpX450191LlmZfUKkXxkTry7nA==}
     engines: {node: ^10 || ^12 || >=14}
 
+  prettier@2.8.8:
+    resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+
   pretty-bytes@6.1.1:
     resolution: {integrity: sha512-mQUvGU6aUFQ+rNvTIAcZuWGRT9a6f6Yrg9bHs4ImKF+HZCEK+plBvnAZYSIQztknZF2qnzNtr6F8s0+IuptdlQ==}
     engines: {node: ^14.13.1 || >=16.0.0}
@@ -2697,6 +2740,9 @@ packages:
   require-from-string@2.0.2:
     resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
     engines: {node: '>=0.10.0'}
+
+  resize-observer-polyfill@1.5.1:
+    resolution: {integrity: sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==}
 
   resolve-from@5.0.0:
     resolution: {integrity: sha512-qYg9KP24dD5qka9J47d0aVky0N+b4fTU89LN9iDnjB5waksiC49rvMB0PrUJQGoTmH50XPiqOvAjDfaijGxYZw==}
@@ -2808,6 +2854,11 @@ packages:
     resolution: {integrity: sha512-ZA6oR3T/pEyuqwMgAKT0/hAv8oAXckzbkmR0UkUosQ+Mc4RxGoJkRmwHgHufaenlyAgE1Mxgpdcrf75y6XcnDg==}
     engines: {node: '>=14.16'}
 
+  slick-carousel@1.8.1:
+    resolution: {integrity: sha512-XB9Ftrf2EEKfzoQXt3Nitrt/IPbT+f1fgqBdoxO3W/+JYvtEOW6EgxnWfr9GH6nmULv7Y2tPmEX3koxThVmebA==}
+    peerDependencies:
+      jquery: '>=1.8.0'
+
   smob@1.5.0:
     resolution: {integrity: sha512-g6T+p7QO8npa+/hNx9ohv1E5pVCmWrVCUzUXJyLdMmftX6ER0oiWY/w9knEonLpnOp6b6FenKnMfR8gqwWdwig==}
 
@@ -2842,6 +2893,9 @@ packages:
 
   streamx@2.21.1:
     resolution: {integrity: sha512-PhP9wUnFLa+91CPy3N6tiQsK+gnYyUNuk15S3YG/zjYE7RuPeCjJngqnzpC31ow0lzBHQ+QGO4cNJnd0djYUsw==}
+
+  string-convert@0.2.1:
+    resolution: {integrity: sha512-u/1tdPl4yQnPBjnVrmdLo9gtuLvELKsAoRapekWggdiQNvvvum+jYF329d84NAa660KQw7pB2n36KrIKVoXa3A==}
 
   string-width@4.2.3:
     resolution: {integrity: sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==}
@@ -3307,6 +3361,21 @@ packages:
     resolution: {integrity: sha512-HDuk+PuH5monfNuY+ct49mNmkCRK4xJAV9Ts4z9UFc4rzdDnxQLyCMGGc8pKhZhHTVzfanpNwB/lwqevcBwI4w==}
     peerDependencies:
       vue: ^3.2.0
+
+  vue-slick-carousel@1.0.6:
+    resolution: {integrity: sha512-1CN/hpWC8m1U/eO7Kuc71jntJqdg6Z/ieLji21OPfQUhs8ZYnnGhQSu1covpa3IyuovM9T5puPCVgexs3DDF5A==}
+
+  vue3-carousel-nuxt@1.1.5:
+    resolution: {integrity: sha512-Ee9gB1gA9WDPk+1Dxg5vb0N/xWkDwDmvAdwZJ2y+NV+yyBbKiyaZHTjpfWy57TuLeqKVWHyzv+RbDVn85l7mQw==}
+
+  vue3-carousel@0.13.0:
+    resolution: {integrity: sha512-vio91KI4mVMlCDbVhGzW9nIyYqxu0moqroPR/OrJeaCvAK3SJYxqvH36a4/t1oEJYJsTgh+IuNiNi6c+7DVKZg==}
+    peerDependencies:
+      vue: ^3.5.0
+
+  vue@2.7.16:
+    resolution: {integrity: sha512-4gCtFXaAA3zYZdTp5s4Hl2sozuySsgz4jy1EnpBHNfpMa9dK1ZCG7viqBPCwXtmgc8nHqUsAu3G4gtmXkkY3Sw==}
+    deprecated: Vue 2 has reached EOL and is no longer actively maintained. See https://v2.vuejs.org/eol/ for more details.
 
   vue@3.5.13:
     resolution: {integrity: sha512-wmeiSMxkZCSc+PM2w2VRsOYAZC8GdipNFRTsLSfodVqI9mbejKeXEGr8SckuLnrQPGe3oJN5c3K0vpoU9q/wCQ==}
@@ -4266,6 +4335,10 @@ snapshots:
 
   '@types/sizzle@2.3.9': {}
 
+  '@types/slick-carousel@1.6.40':
+    dependencies:
+      '@types/jquery': 3.5.32
+
   '@types/web-bluetooth@0.0.20': {}
 
   '@unhead/dom@1.11.14':
@@ -4391,6 +4464,14 @@ snapshots:
     dependencies:
       '@vue/compiler-core': 3.5.13
       '@vue/shared': 3.5.13
+
+  '@vue/compiler-sfc@2.7.16':
+    dependencies:
+      '@babel/parser': 7.26.3
+      postcss: 8.4.49
+      source-map: 0.6.1
+    optionalDependencies:
+      prettier: 2.8.8
 
   '@vue/compiler-sfc@3.5.13':
     dependencies:
@@ -4979,6 +5060,8 @@ snapshots:
       graceful-fs: 4.2.11
       tapable: 2.2.1
 
+  enquire.js@2.1.6: {}
+
   entities@4.5.0: {}
 
   error-stack-parser-es@0.1.5: {}
@@ -5442,6 +5525,10 @@ snapshots:
 
   json-schema-traverse@1.0.0: {}
 
+  json2mq@0.2.0:
+    dependencies:
+      string-convert: 0.2.1
+
   json5@2.2.3: {}
 
   jsonfile@6.1.0:
@@ -5497,11 +5584,19 @@ snapshots:
       mlly: 1.7.3
       pkg-types: 1.2.1
 
+  lodash.assign@4.2.0: {}
+
+  lodash.debounce@4.0.8: {}
+
   lodash.defaults@4.2.0: {}
+
+  lodash.get@4.4.2: {}
 
   lodash.isarguments@3.1.0: {}
 
   lodash.memoize@4.1.2: {}
+
+  lodash.pick@4.4.0: {}
 
   lodash.uniq@4.5.0: {}
 
@@ -6203,6 +6298,9 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
+  prettier@2.8.8:
+    optional: true
+
   pretty-bytes@6.1.1: {}
 
   process-nextick-args@2.0.1: {}
@@ -6276,6 +6374,8 @@ snapshots:
   require-directory@2.1.1: {}
 
   require-from-string@2.0.2: {}
+
+  resize-observer-polyfill@1.5.1: {}
 
   resolve-from@5.0.0: {}
 
@@ -6410,6 +6510,10 @@ snapshots:
 
   slash@5.1.0: {}
 
+  slick-carousel@1.8.1(jquery@3.7.1):
+    dependencies:
+      jquery: 3.7.1
+
   smob@1.5.0: {}
 
   source-map-js@1.2.1: {}
@@ -6438,6 +6542,8 @@ snapshots:
       text-decoder: 1.2.3
     optionalDependencies:
       bare-events: 2.5.0
+
+  string-convert@0.2.1: {}
 
   string-width@4.2.3:
     dependencies:
@@ -6899,6 +7005,36 @@ snapshots:
     dependencies:
       '@vue/devtools-api': 6.6.4
       vue: 3.5.13(typescript@5.7.2)
+
+  vue-slick-carousel@1.0.6:
+    dependencies:
+      enquire.js: 2.1.6
+      json2mq: 0.2.0
+      lodash.assign: 4.2.0
+      lodash.debounce: 4.0.8
+      lodash.get: 4.4.2
+      lodash.pick: 4.4.0
+      resize-observer-polyfill: 1.5.1
+      vue: 2.7.16
+
+  vue3-carousel-nuxt@1.1.5(magicast@0.3.5)(rollup@4.29.1)(vue@3.5.13(typescript@5.7.2)):
+    dependencies:
+      '@nuxt/kit': 3.15.0(magicast@0.3.5)(rollup@4.29.1)
+      vue3-carousel: 0.13.0(vue@3.5.13(typescript@5.7.2))
+    transitivePeerDependencies:
+      - magicast
+      - rollup
+      - supports-color
+      - vue
+
+  vue3-carousel@0.13.0(vue@3.5.13(typescript@5.7.2)):
+    dependencies:
+      vue: 3.5.13(typescript@5.7.2)
+
+  vue@2.7.16:
+    dependencies:
+      '@vue/compiler-sfc': 2.7.16
+      csstype: 3.1.3
 
   vue@3.5.13(typescript@5.7.2):
     dependencies:

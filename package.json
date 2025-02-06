@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@types/jquery": "^3.5.32",
+    "@types/slick-carousel": "^1.6.40",
     "@vueuse/nuxt": "^12.3.0",
     "axios": "^1.7.9",
     "flowbite": "^3.0.0",
@@ -18,9 +19,12 @@
     "nuxt": "^3.15.0",
     "owl.carousel": "^2.3.4",
     "pinia": "^2.3.1",
+    "slick-carousel": "^1.8.1",
     "vue": "^3.5.13",
     "vue-loading-skeleton": "^1.1.9",
-    "vue-router": "latest"
+    "vue-router": "latest",
+    "vue-slick-carousel": "^1.0.6",
+    "vue3-carousel-nuxt": "^1.1.5"
   },
   "devDependencies": {
     "@types/node": "^22.10.4",

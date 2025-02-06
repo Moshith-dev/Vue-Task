@@ -77,8 +77,9 @@ section{
     max-width: 900px;
     margin: 0 auto;
     background: #000;
-    border-radius: 12px;
+    border-radius: 20px;
     overflow: hidden;
+    
 }
 
 video {

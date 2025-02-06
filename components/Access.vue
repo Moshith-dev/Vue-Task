@@ -1,27 +1,25 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { GetPageContentApi } from '@/services/home';
+import Button from './Button.vue';
+
+const custombutton = ref({
+  text: 'Get Early Access',
+  buttonStyle : 'ml-10 text-white bg-indigo-600 rounded-lg  button hover:bg-indigo-500'
+});
+
+const HandleClick = () => {
+  console.log('Button clicked');
+};
 
 type TpageContent = {
   heading: string;
   description: string;
-}
+};
 
-const pageContent = ref<TpageContent[]>([]);
+defineProps<{
+  pageContent: TpageContent[];
+}>();
 
-async function GetPageContent() {
-  try {
-    const response = await GetPageContentApi();
-    if (response.status === 200) {
-      console.log(response.data);
-      pageContent.value = response.data;
-    }
-  }
-  catch (error) {
-    console.log(error);
-  }
-}
-GetPageContent();
 onMounted(() => {
   const animatedSections = document.querySelectorAll(".anim-slide-right");
 
@@ -68,9 +66,8 @@ onMounted(() => {
         </p>
         <input type="email" placeholder="your email"
           class="border border-gray-300 rounded-lg  button focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-        <button class="ml-10 text-white bg-indigo-600 rounded-lg  button hover:bg-indigo-500">
-          Get Early Access
-        </button>
+        
+        <Button v-bind="custombutton" :action="HandleClick"/>
       </div>
     </div>
 
