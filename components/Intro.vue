@@ -1,11 +1,17 @@
 <script setup lang="ts">
 import { ref, computed, onUnmounted, onMounted } from 'vue'
+import Section from './Section.vue';
+
+const sectionContent = ref<{
+title: string;
+description: string;
+image: string;
+}[]>([]);
 
 type TpageContent = {
   heading: string;
   description: string;
 };
-
 
 defineProps<{
   pageContent: TpageContent[];
@@ -148,23 +154,15 @@ onMounted(() => {
     <div class="px-4 py-8 md:py-20 md:px-20">
       <!-- Header Text -->
       <div class="flex flex-col py-2 mx-2 my-3 text-center items-center md:mx-5 md:my-5">
-        <h3 class="text-2xl font-bold text-gray-900 md:text-4xl anim-slide-up">
+        <h3 class="text-4xl font-medium text-gray-900 md:text-6xl anim-slide-up mx-56 mt-10 my-10">
 
-          <span v-if="pageContent.length > 0"> {{ pageContent[2]?.heading.substring(0, 30) }}</span>
+          <span v-if="pageContent.length > 0"> {{ pageContent[2]?.heading }}</span>
           <span v-else class="block w-[750px] h-14 bg-gray-300 rounded animate-pulse"></span>
-          <br class="hidden md:block" v-if="pageContent.length > 0" />
-
-          <span v-if="pageContent.length > 0">{{ pageContent[2]?.heading.substring(30, 53) }}</span>
-          <span v-else class="block w-[750px] h-14 bg-gray-300 rounded animate-pulse mt-1"></span>
+        
         </h3>
-        <p class="mt-4 text-sm text-gray-500 md:mt-7 md:text-xl anim-slide-up">
-          <span v-if="pageContent.length > 0">{{ pageContent[2]?.description.substring(0, 77) }}</span>
+        <p class="mt-4 text-sm text-gray-500 md:mt-7 md:text-xl anim-slide-up text-center mx-[250px] my-16">
+          <span v-if="pageContent.length > 0">{{ pageContent[2]?.description }}</span>
           <span v-else class="block w-96 h-10 bg-gray-300 rounded animate-pulse"></span>
-
-          <br class="hidden md:block" v-if="pageContent.length > 0" />
-          <span v-if="pageContent.length > 0">{{ pageContent[2]?.description.substring(77, 154) }}</span>
-          <span v-else class="block w-96 h-10 bg-gray-300 rounded animate-pulse mt-1"></span>
-
         </p>
       </div>
 
@@ -227,58 +225,9 @@ onMounted(() => {
 
 
       <div class="flex flex-col justify-around gap-6 px-2 pt-5 mx-10 md:flex-row md:px-2">
-
-        <div class="flex items-start gap-3 p-1 md:items-center">
-          <img class="w-10 md:w-[70px]" src="https://prium.github.io/Shape/assets/img/icons/icon-1.png"
-            alt="download " />
-          <div class="flex-1">
-            <p class="text-xl font-semibold text-gray-700 md:text-2xl">
-
-              <span v-if="pageContent.length > 0">{{ pageContent[3]?.heading }}</span>
-              <span v-else class="block w-80 h-10 bg-gray-300 rounded animate-pulse"></span>
-            </p>
-            <p class="mt-2 text-xl text-gray-500 md:text-xl">
-
-              <span v-if="pageContent.length > 0">{{ pageContent[3]?.description }}</span>
-              <span v-else class="block w-80 h-20 bg-gray-300 rounded animate-pulse"></span>
-            </p>
-          </div>
-        </div>
-
-
-        <div class="flex items-start gap-3 p-1 md:items-center">
-          <img class="w-10 md:w-[70px]" src="https://prium.github.io/Shape/assets/img/icons/icon.png" alt="download" />
-          <div class="flex-1">
-            <p class="text-xl font-semibold text-gray-700 md:text-2xl">
-              <span v-if="pageContent.length > 0">{{ pageContent[4]?.heading }}</span>
-              <span v-else class="block w-80 h-10 bg-gray-300 rounded animate-pulse"></span>
-
-            </p>
-            <p class="mt-2 text-xl text-gray-500 md:text-xl">
-              <span v-if="pageContent.length > 0">{{ pageContent[4]?.description }}</span>
-              <span v-else class="block w-80 h-20 bg-gray-300 rounded animate-pulse"></span>
-
-            </p>
-          </div>
-        </div>
-
-
-        <div class="flex items-start gap-3 p-1 md:items-center">
-          <img class="w-10 md:w-[70px]" src="https://prium.github.io/Shape/assets/img/icons/icon-3.png"
-            alt="download" />
-          <div class="flex-1">
-            <p class="text-xl font-semibold text-gray-700 md:text-2xl">
-
-              <span v-if="pageContent.length > 0">{{ pageContent[5]?.heading }}</span>
-              <span v-else class="block w-80 h-10 bg-gray-300 rounded animate-pulse"></span>
-            </p>
-            <p class="mt-2 text-l text-gray-500 md:text-xl">
-
-              <span v-if="pageContent.length > 0">{{ pageContent[5]?.description }}</span>
-              <span v-else class="block w-80 h-20 bg-gray-300 rounded animate-pulse"></span>
-            </p>
-          </div>
-        </div>
+        <Section :title="pageContent[3]?.heading" :description="pageContent[3]?.description" :image="'https://prium.github.io/Shape/assets/img/icons/icon-1.png'" />
+        <Section :title="pageContent[4]?.heading" :description="pageContent[4]?.description" :image="'https://prium.github.io/Shape/assets/img/icons/icon.png'" />
+        <Section :title="pageContent[5]?.heading" :description="pageContent[5]?.description" :image="'https://prium.github.io/Shape/assets/img/icons/icon-3.png'" />
       </div>
     </div>
   </section>

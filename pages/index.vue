@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted } from 'vue';
 import { GetPageContentApi, GetMenuApi } from '@/services/home';
 
 type TpageContent = {

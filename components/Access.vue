@@ -46,17 +46,17 @@ onMounted(() => {
       ">
     <div class="relative inset-0 bg-black bg-opacity-10"></div>
 
-    <div class="relative flex justify-end h-full mx-10 gap-10">
+    <div class="relative flex justify-end  h-full mx-10 gap-10">
       <img class="my-5 anim-slide-right " src="https://prium.github.io/Shape/assets/img/illustrations/shapes-20.png"
         alt="" style="object-fit: contain; background-position: center; width: 150px;">
-      <div class="px-10 text-center py-9"
+      <div class="px-10 text-center py-9 content-center "
         style="background-image: url('https://prium.github.io/Shape/assets/img/bg-img/appland_bg12.png'); background-position: center; background-size:cover; background-repeat: no-repeat; width: 750px;">
 
-        <h3 class="text-5xl font-bold text-white">
+        <h3 class="text-5xl font-bold text-white ">
           <span v-if="pageContent.length > 0">{{ pageContent[12]?.heading }} </span>
           <span v-else class="block w-96 h-12 bg-gray-300 rounded animate-pulse"></span>
           <span class="absolute w-[81px] h-[70px] "
-            style="background-image: url('https://prium.github.io/Shape/assets/img/illustrations/shapes-19.png'); background-size: contain; background-repeat: no-repeat; background-position: center; transform: translate3d(65%, -99%, 0); ">
+            style="background-image: url('https://prium.github.io/Shape/assets/img/illustrations/shapes-19.png'); background-size: contain; background-repeat: no-repeat; background-position: center; top: 75px; right: 110px; ">
 
           </span>
         </h3>

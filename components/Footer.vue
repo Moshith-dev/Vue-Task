@@ -68,11 +68,7 @@ type Tmenu = {
   items: string[];
   parentId: number;
 };
-// Removed as it is now combined with the previous defineProps
 
-
-
-// OnMounted lifecycle hook to fetch data
 onMounted(() => {
   getIcons();
 

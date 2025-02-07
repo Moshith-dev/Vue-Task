@@ -68,14 +68,11 @@ onMounted(() => {
             <span v-if="pageContent.length > 0">{{ pageContent[9]?.heading }}</span>
             <span v-else class="block w-96 h-10 bg-gray-300 rounded animate-pulse"></span>
           </h3>
-          <p class="px-0 py-2 pb-6 my-3 text-lg text-gray-500 md:px-2 md:pb-10 md:my-5 md:text-xl">
+          <p class="px-0 py-2 pb-6 my-3 text-lg text-gray-500 md:px-2 md:pb-10 md:my-5 md:text-xl md:mr-28">
 
-            <span v-if="pageContent.length > 0">{{ pageContent[9]?.description.substring(0, 53) }}</span>
+            <span v-if="pageContent.length > 0">{{ pageContent[9]?.description }}</span>
             <span v-else class="block w-80 h-7 bg-gray-300 rounded animate-pulse"></span>
-            <br class="hidden md:block" v-if="pageContent.length > 0" />
-
-            <span v-if="pageContent.length > 0">{{ pageContent[9]?.description.substring(53, 88) }}</span>
-            <span v-else class="block w-80 h-7 bg-gray-300 rounded animate-pulse mt-1"></span>
+            
           </p>
 
           <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">

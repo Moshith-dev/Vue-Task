@@ -50,7 +50,7 @@ onMounted(() => {
 
       <div class="flex flex-col justify-around gap-8 px-4 md:flex-row md:px-5">
 
-        <div class="flex flex-col items-center justify-center gap-2 p-4 md:items-start md:p-1 anim-slide-right">
+        <div class="flex flex-col items-center justify-center gap-2 p-4 md:items-center md:p-1 anim-slide-right">
           <h3 class="relative text-3xl font-bold text-gray-700 md:text-5xl">
             <span v-if="pageContent.length > 0">{{ pageContent[13]?.heading }}</span>
             <span v-else class="block w-96 h-12 bg-gray-300 rounded animate-pulse"></span>
@@ -64,7 +64,7 @@ onMounted(() => {
               "></span>
           </h3>
 
-          <div class="text-gray-500 w-full md:w-[320px] text-center md:text-left my-4 md:my-6 px-4 md:px-6">
+          <div class="text-gray-500 w-full md:w-[320px] md:text-center my-4 md:my-6 px-4 md:px-1 md:text-xl">
             <span v-if="pageContent.length > 0"> {{ pageContent[13]?.description }} </span>
             <span v-else class="block w-96 h-16 bg-gray-300 rounded animate-pulse"></span>
           </div>

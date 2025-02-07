@@ -3,8 +3,8 @@ import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import Button from './Button.vue';
 
 const custombutton = ref({
-  text:'Get Access',
-  buttonStyle : 'w-full px-4 py-3 text-base font-bold text-white bg-indigo-600 rounded md:w-auto md:px-10 md:py-6 md:ml-10 lg:text-[22px]  hover:bg-indigo-500'
+  text: 'Get Access',
+  buttonStyle: 'w-full px-4 py-3 text-base font-bold text-white bg-indigo-600 rounded md:w-auto md:px-10 md:py-6 md:ml-10 lg:text-[22px]  hover:bg-indigo-500'
 })
 
 const HandleClick = () => {
@@ -140,43 +140,37 @@ onBeforeUnmount(() => {
         style="background-image: url('https://prium.github.io/Shape/assets/img/bg-img/appland_bg_companies.svg');  background-position: bottom; background-repeat: no-repeat; background-size: contain; position: relative; ">
 
         <div class="flex flex-col items-center pt-[130px]  mt-8  gap-3">
-          <h1 class=" font-medium text-white md:text-[78px] leading-[70px] anim-slide-up text-center ">
-            <span v-if="pageContent.length > 0">{{ pageContent[0].heading.substring(0, 21) }}</span>
+          <h1 class=" font-medium text-white md:text-[78px] leading-[70px] anim-slide-up text-center mx-80 ">
+            <span v-if="pageContent.length > 0">{{ pageContent[0].heading}}</span>
             <span v-else class="block w-[800px] h-16 bg-gray-300 rounded animate-pulse"></span>
             <span class="absolute hidden md:block " style="
                               background-image: url('https://prium.github.io/Shape/assets/img/illustrations/shapes-13.png'); 
                               background-size: contain; 
                               background-repeat: no-repeat; 
                               background-position: center; 
-                              left: 93%;
+                              left: 89%;
                               top: -28%;
                               width: 150px;
                               height: 100px;
-                            "></span><br v-if="pageContent.length > 0">
-
-            <span v-if="pageContent.length > 0">{{ pageContent[0].heading.substring(21, 42) }}</span>
-            <span v-else class="block w-[800px] h-16 bg-gray-300 rounded animate-pulse mt-1"></span>
+                            "></span>
           </h1>
-          <p class="my-6 text-4xl text-center text-gray-500 capitalize md:my-10 md:text-3xl lg:text-3xl anim-slide-up">
-            <span v-if="pageContent.length > 0">{{ pageContent[0].description?.substring(0, 55) }} </span>
+          <p class="my-6 text-4xl text-center text-gray-500 capitalize md:my-10 md:text-3xl lg:text-3xl anim-slide-up mx-80">
+            <span v-if="pageContent.length > 0">{{ pageContent[0].description }} </span>
             <span v-else class="block w-96 h-10 bg-gray-300 rounded animate-pulse "></span>
-            <br v-if="pageContent.length > 0" class="hidden md:block" />
-            <span v-if="pageContent.length > 0">{{ pageContent[0].description?.substring(55, 83) }}</span>
-            <span v-else class="block w-96 h-10 bg-gray-300 rounded animate-pulse mt-1"></span>
-
+           
           </p>
           <div class="relative flex flex-col justify-center gap-4 pb-10 md:flex-row md:gap-0 md:pb-20 anim-slide-up">
             <input type="email" placeholder="Your Email"
               class="w-full px-4 py-3 text-base font-bold bg-[#2f314b] rounded md:w-auto md:px-12 md:py-6 lg:text-[22px] focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-              <Button v-bind="custombutton" :action="HandleClick"/>
+            <Button v-bind="custombutton" :action="HandleClick" />
           </div>
-          
+
 
           <div class="-z-10 px-10">
             <div class="flex flex-col items-center justify-center">
-              <img class="absolute w-[13%] md:w-[8%] top-[35%] left-[5%] md:left-[18%] anim-slide-up"
+              <img class="absolute w-[13%] md:w-[8%] top-[40%] left-[5%] md:left-[14%] anim-slide-up"
                 src="https://prium.github.io/Shape/assets/img/illustrations/home/appland_shapes2.png" alt="">
-              <img class="absolute w-[10%] md:w-[8%] top-[35%] right-[5%] md:right-[18%] anim-slide-up"
+              <img class="absolute w-[10%] md:w-[8%] top-[35%] right-[5%] md:right-[16%] anim-slide-up"
                 src="https://prium.github.io/Shape/assets/img/illustrations/home/appland_shapes4.png" alt="">
               <img class="absolute w-[8%] md:w-[8%] top-[60%] left-[%] md:left-[15%] anim-slide-up"
                 src="https://prium.github.io/Shape/assets/img/illustrations/home/appland_shapes3.png" alt="">
@@ -193,7 +187,8 @@ onBeforeUnmount(() => {
                 <h6 class="mb-8 text-gray-200 font-bold text-sm md:text-base uppercase tracking-wider relative z-10">
 
                   <span v-if="pageContent.length > 0">{{ pageContent[1]?.heading }}</span>
-                  <span v-else class="absolute block w-96 h-10 bg-gray-300 rounded animate-pulse left-[450px] bottom-[90px]"></span>
+                  <span v-else
+                    class="absolute block w-96 h-10 bg-gray-300 rounded animate-pulse left-[450px] bottom-[90px]"></span>
                 </h6>
 
                 <div class="relative logo-carousel" ref="carouselContainer">
