@@ -25,11 +25,11 @@ const props = defineProps<{
 // Define menus based on parentId for each menu in MenuItem
 const menus = computed(() => {
   return [
-    { title: props.MenuItem[0]?.menu, parentId: 1 }, // First menu with parentId 1
-    { title: props.MenuItem[1]?.menu, parentId: 2 }, // Second menu with parentId 2
-    { title: props.MenuItem[2]?.menu, parentId: 3 }, // Third menu with parentId 3
-    { title: props.MenuItem[3]?.menu, parentId: 4 }, // Fourth menu with parentId 4
-    { title: props.MenuItem[4]?.menu, parentId: 5 }, // Fifth menu with parentId 5
+    { title: props.MenuItem[0]?.menu, parentId: 1 }, 
+    { title: props.MenuItem[1]?.menu, parentId: 2 }, 
+    { title: props.MenuItem[2]?.menu, parentId: 3 }, 
+    { title: props.MenuItem[3]?.menu, parentId: 4 }, 
+    { title: props.MenuItem[4]?.menu, parentId: 5 },
   ];
 });
 
@@ -71,7 +71,6 @@ const toggleSubmenu = (index: number) => {
             <path d="M480-360 280-560h400L480-360Z" />
           </svg>
         </button>
-
         <div class="absolute left-0 hidden pt-4 group-hover:block">
           <div :class="[ 'bg-[#ffffff] rounded-lg shadow-lg py-2', menu.title === 'Components' ? 'grid grid-cols-4 gap-1 p-1 w-[600px]' : 'w-48' ]">
             <a v-for="(item, i) in getMenuItems(menu.parentId)" :key="i" href="#" :class="[
@@ -84,7 +83,6 @@ const toggleSubmenu = (index: number) => {
         </div>
       </div>
     </div>
-
     <div v-if="isMenuOpen" class="absolute top-full left-0 right-0 bg-[#0f0f1a] md:hidden">
       <div class="px-4 py-2">
         <div v-for="(menu, index) in menus" :key="index" class="relative">
